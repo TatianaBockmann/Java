@@ -1,0 +1,73 @@
+public class ExemploConversao {
+    public static void imprime(){
+        double pi = 3.1416;
+        int p2 = (int) pi;
+        System.out.println(pi);
+        System.out.println(p2);
+}
+    public static void main(String[] args) {
+        imprime();
+    }
+}
+
+
+
+public class ExemploConstante {
+    public static final double PI = 3.1416;
+    
+    public static void main(String[] args) {
+        System.out.println(" O valor de PI é " + PI);
+    }
+}
+
+
+public class Exerc_limite {
+    public static void main(String[] args) {
+        
+        double salario = 2500.00;
+    
+        if (salario > 5000.00)
+            System.out.println("O limite é de R$ 2.000,00");
+        else if (salario < 5000.00 && salario > 3000.00)
+            System.out.println("O limite é de R$ 1.500,00");
+        else if (salario < 3000.00 && salario > 2000.00)
+            System.out.println("O limite é de R$ 1.000,00");
+        else if (salario < 2000.00 && salario > 1000.00)
+            System.out.println("O limite é R$ 500,00");
+        else 
+            System.out.println("O limite é R$ 0,00");
+    
+    }
+       
+}
+
+
+public class TestaIdade {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int idade = 20;
+        System.out.println("idade");
+        int idadeAnoQueVem = idade + 1;
+        System.out.println("idadeAnoQueVem");
+    }
+    
+}
+
+
+public class TesteString {
+    public static void main(String[] args) {
+        String string = "Testando";
+        String string2 = string;
+        string = string.concat(" as strings");
+        System.out.println(string);
+        System.out.println(string2);
+        String string3;
+        string3 = string + " " + string2;
+        System.out.println(" O valor da string3 é " + string3);
+        
+    }
+    
+}
