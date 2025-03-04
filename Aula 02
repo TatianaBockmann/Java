@@ -1,1 +1,105 @@
+public class swicht_cases {
+    public static void main(String[] args) {
+        int opcao = 10;
+        String selecao = "Você selecionou ";
+        switch (opcao){
+            case 7:
+                selecao += " satisfatório";
+                break;
+            case 8:
+                selecao += " Bom";
+                break;
+            case 9:
+                selecao += " Ótimo";
+                break;
+            case 10:
+                selecao += " Excelente";
+                break;
+            default:
+                selecao+="Uma opção inválida";
+        }
+        System.out.println(selecao);
+    }
+    
+}
+
+
+public class While {
+    public static void main(String[] args) {
+        int d = 0;
+        while(d<10){
+            System.out.println(" O valor de d é: " + d++);
+        }
+    }
+
+public class For {
+    public static void main(String[] args) {
+        for (int i=0; i<=10; i++){
+            System.out.println(" O valor de i é " + i);
+        }
+    }
+    
+}
+
+
+public class WhileLong {
+    public static void main(String[] args) {
+        long d =10;
+        do{
+            System.out.println(d++);
+        }while(d<=20);
+    }
+    
+}
+
+public class Tabuada {
+    public static void main(String[] args) {
+        int tab, n1, n2;
+        for (n1=1; n1<=10; n1++)
+        {
+            System.out.println(" Tabuada do " + n1);
+        
+        for (n2=1; n2<=10; n2++)
+        {
+            tab=n1*n2;
+            System.out.println(n1 + " x " + n2 + " = " + tab);
+        }
+        }
+    }
+    
+}
+
+
+
+public class Programa {
+    public static void main(String[] args) {
+        Conta minhaConta;
+        minhaConta = new Conta();
+        minhaConta.dono = " Tatiana";
+        minhaConta.numero = 1512;
+        minhaConta.saldo = 1000.5;
+        minhaConta.limite = 5000.00;
+        
+        System.out.println(" A conta número " + minhaConta.numero + 
+        " de " + minhaConta.dono + " tem saldo de R$ " + minhaConta.saldo);
+        
+        minhaConta.sacar(550.5);
+        System.out.println(" Meu novo saldo é de R$ " + minhaConta.saldo);
+        
+    }
+  }
+
+class Conta {
+    int numero;
+    String dono;
+    double saldo;
+    double limite;
+    
+    public void sacar(double qtde){
+        double novoSaldo = saldo - qtde;
+        saldo = novoSaldo;
+    }
+    
+}
+
 
