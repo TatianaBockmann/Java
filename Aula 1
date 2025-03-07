@@ -1,8 +1,10 @@
 NetBeans
 
-Arquivo → novo projeto → java (1º) → aplicação java → próximo → nome e localização → finalizar (mudar o nome)
+Arquivo → novo projeto → java (1º) → aplicação java → próximo → nome e localização → finalizar (retirar criar classe 
+principal) (mudar o nome).
+
 Projetos (lado superior esquerdo) → pacotes de código-fonte → javaapplication1 → botão direito do mouse → Nova 
-classe java (retirar criar classe principal) → colocar nome e finalizar
+classe java  → colocar nome e finalizar.
 
 Cuidar para não inserir a classe no pacote de código-fonte e sim no pacote do projeto.
 
