@@ -2,7 +2,7 @@ NetBeans
 
 Arquivo → novo projeto → java (1º) → aplicação java → próximo → nome e localização → finalizar (mudar o nome)
 Projetos (lado superior esquerdo) → pacotes de código-fonte → javaapplication1 → botão direito do mouse → Nova 
-classe java → colocar nome e finalizar
+classe java (retirar criar classe principal) → colocar nome e finalizar
 
 Cuidar para não inserir a classe no pacote de código-fonte e sim no pacote do projeto.
 
@@ -10,4 +10,60 @@ Primeira classe criada será a classe principal do projeto. Um projeto pode ter 
 classes com o método main, mas somente uma será executada quando o projeto for executado.
 Se vc quiser executar o arquivo: Shift + F6
 Se vc quiser executar o projeto (primeira classe criada): F6
+
+Psvm + Tab (no início do código)
+public static void main(String[] args) {
+
+sout + Tab 
+System.out.println(selecao);
+
+Formatar arruma o código depois que juntei tudo numa linha
+Para formatar o código no NetBeans, pode utilizar o atalho de teclado Alt+Shift+F ou a opção "Formatar", no menu 
+"Código Fonte"
+
+Para identar o código no NetBeans, pode utilizar a combinação de teclas ALT+SHIFT+F. 
+
+Convenções para nomes de identificadores
+Pacotes
+O prefixo do nome de um pacote exclusivo é sempre escrito em todos os minúsculas letras ASCII e deve ser um dos nomes 
+de domínio de nível superior, atualmente com, edu, gov, mil, net, org.
+Exemplos:
+edu.cmu.cs.bovik.cheese
+br.com.marciomomberger
+
+Classes
+Nomes de classes em Java são escritos em minúsculo com a primeira letra em maiúscula. Para os nomes compostos por mais
+de um termo, usa-se começar os termos seguintes com letra maiúscula.
+Os nomes de classes Java são formados por substantivos e adjetivos.
+Exemplos: Aluno, AlunoBolsista.
+
+Métodos e Variáveis
+Os métodos e variáveis devem ser nomeados com letras minúsculas. No caso do identificador ser formado por mais de um termo,
+o segundo termo e os termos seguintes devem iniciar com letra maiúscula.
+As variáveis são compostas por substantivos e adjetivos, enquanto que os nomes de métodos começam sempre com um verbo.
+Exemplos: contaCorrente, abrirContaCorrente(), saldo, verificarSaldo().
+
+Constantes
+Para as variáveis finais, que representam constantes em Java, usa-se todo o nome em letras maiúsculas. Quando as constantes 
+forem formadas por mais de um termo, usa-se sublinhado para separá-los.
+Os nomes de constantes Java são formados por substantivos e adjetivos.
+Exemplos: VALOR_PI, SALARIO_MINIMO, MES.
+
+Switch:
+Em vez de escrever muitas if..else declarações, você pode usar a switchdeclaração.
+A switchinstrução seleciona um dos muitos blocos de código a serem executados:
+É assim que funciona:
+•	A switch expressão é avaliada uma vez.
+•	O valor da expressão é comparado com os valores de cada case.
+•	Se houver uma correspondência, o bloco de código associado será executado.
+•	As palavras-chave breake default são opcionais e serão descritas mais adiante neste capítulo
+•	Quando o Java atinge uma break palavra-chave, ele sai do bloco switch.
+•	Isso interromperá a execução de mais código e testes de caso dentro do bloco.
+•	Quando uma correspondência é encontrada, e o trabalho é feito, é hora de uma pausa. Não há necessidade de mais testes.
+
+
+
+
+
+
 
