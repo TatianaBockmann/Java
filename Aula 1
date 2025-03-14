@@ -63,6 +63,23 @@ A switchinstrução seleciona um dos muitos blocos de código a serem executados
 •	Isso interromperá a execução de mais código e testes de caso dentro do bloco.
 •	Quando uma correspondência é encontrada, e o trabalho é feito, é hora de uma pausa. Não há necessidade de mais testes.
 
+Aula 03
+Scanner 
+O Scanner é utilizado para ler o que foi digitado no teclado.
+
+Importar a classe import java.util.Scanner;
+Depois de importar a classe, no método principal (onde tem o main ) devemos instanciar o objeto, ou seja, temos que
+tipo ‘clonar’ o objeto Scanner.
+
+Scanner leitura = new Scanner(System.in);
+
+A palavra-chave private em Java é um modificador de acesso que restringe a visibilidade de métodos, campos e construtores. 
+É uma prática comum para encapsular dados e evitar acesso não autorizado. 
+
+nextLine, converte os dados de string para long, com o
+comando Long.parseLong() e de string para int, usando o
+comando Integer.parseInt().
+
 
 
 
