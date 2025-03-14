@@ -19,3 +19,104 @@ public class Exercicio4_tabuadaScanner {
     
 }
 
+
+package Aula03;
+
+import java.util.Scanner;
+/**
+ *
+ * @author Tatiana
+ */
+public class CadAluno {
+    public static void main(String[] args) {
+        Aluno novo = new Aluno();
+        Scanner ler = new Scanner(System.in);
+        System.out.println("Digite o número da matrícula: ");
+        novo.numMatricula = Integer.parseInt(ler.nextLine());
+        System.out.println("Digite o nome do aluno: ");
+        novo.nomeAluno = ler.nextLine();
+        System.out.println("Digite o valor da menslidade: ");
+        novo.vlrMensalidade = Double.parseDouble(ler.nextLine().replace(",","."));
+        System.out.println(" O aluno " + novo.nomeAluno + ", número da matrícula " 
+                + novo.numMatricula + "paga de mensalidade R$ " 
+                + novo.vlrMensalidade);
+    }
+    
+}
+
+package Aula03;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class Aluno {
+    
+    int numMatricula;
+    String nomeAluno;
+    double vlrMensalidade;
+    
+    
+}
+
+
+package Aula03;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class ExemploScanner {
+    private long codigo; 
+    private String primeiroNome;
+    private String sobrenome;
+    private int idade;
+    
+    public String mostrarDigitacao(){
+    return "Digitado {"
+            + "Código = " + codigo
+            + ", Primeiro Nome = '" + primeiroNome + '\''
+            + ", Sobrenome = '" + sobrenome + '\''
+            + ", idade = " + idade
+            + '}' + "\n";    
+}
+    public static void main(String[] args) {
+        //lendoUm();
+        lendoDois();
+    }
+    public static void lendoUm() {
+        //Criar uma instância do Scanner
+        Scanner scanner = new Scanner(System.in);
+        ExemploScanner t = new ExemploScanner();
+        System.out.println(" Entre com o seu código:");
+        //t.codigo = Long.parseLong(scanner.nextLine());
+        t.codigo = scanner.nextInt();
+        System.out.println(" Digite seu primeiro nome: ");
+        t.primeiroNome = scanner.nextLine();
+        System.out.println(" Digite seu sobrenome: ");
+        t.sobrenome = scanner.nextLine();
+        System.out.println(" Digite sua idade: ");
+        t.idade = scanner.nextInt();
+        System.out.println(t.mostrarDigitacao());
+    }
+    
+    public static void lendoDois(){
+        //Criar uma instância do Scanner
+        Scanner scanner = new Scanner(System.in);
+        ExemploScanner t = new ExemploScanner();
+        System.out.println(" Entre com o seu código:");
+        t.codigo = Long.parseLong(scanner.nextLine());
+        //t.codigo = scanner.nextInt();
+        System.out.println(" Digite seu primeiro nome: ");
+        t.primeiroNome = scanner.nextLine();
+        System.out.println(" Digite seu sobrenome: ");
+        t.sobrenome = scanner.nextLine();
+        System.out.println(" Digite sua idade: ");
+        t.idade = scanner.nextInt();
+        System.out.println(t.mostrarDigitacao());
+    
+    }
+}
+
+
