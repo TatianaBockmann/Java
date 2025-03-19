@@ -66,7 +66,14 @@ A switchinstrução seleciona um dos muitos blocos de código a serem executados
 
 Compilado é o processo de converter um código-fonte em um código binário que pode ser executado por um computador.
 
+Cast é uma função ou operador que converte um tipo de dado para outro. Também é conhecido como conversão explícita. 
+As conversões permitidas de forma automática pelo
+compilador são:
+byte -> short-> int-> long-> float-> double
+
+
 Aula 03
+
 Scanner 
 O Scanner é utilizado para ler o que foi digitado no teclado.
 
