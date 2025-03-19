@@ -1,3 +1,4 @@
+
 NetBeans
 
 Arquivo → novo projeto → java (1º) → aplicação java → próximo → nome e localização → finalizar (retirar criar classe 
@@ -62,6 +63,8 @@ A switchinstrução seleciona um dos muitos blocos de código a serem executados
 •	Quando o Java atinge uma break palavra-chave, ele sai do bloco switch.
 •	Isso interromperá a execução de mais código e testes de caso dentro do bloco.
 •	Quando uma correspondência é encontrada, e o trabalho é feito, é hora de uma pausa. Não há necessidade de mais testes.
+
+Compilado é o processo de converter um código-fonte em um código binário que pode ser executado por um computador.
 
 Aula 03
 Scanner 
