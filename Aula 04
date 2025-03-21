@@ -80,3 +80,115 @@ public class AgendaMatrizScanner2
     }
     
 }
+
+
+
+OUTRA MANEIRA
+
+package Aula04;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class AgendaMatrizScanner2 
+{
+    static String[][] agenda = new String[10][5];
+    
+    public static void main(String[] args) 
+    {
+        
+        Scanner ler = new Scanner(System.in);
+        int opcao=0;
+        
+        do
+        {
+            System.out.println(" ---Agenda---");
+            System.out.println(" 1 - Cadastrar ");
+            System.out.println(" 2 - Listar ");
+            System.out.println(" 3 - Sair ");
+            System.out.println(" Digite a opção ");
+            opcao = Integer.parseInt(ler.nextLine());
+            
+            switch (opcao)
+            {
+                case 1:
+                    cadastrar(ler);
+                    break;
+                
+                case 2:
+                    listar();
+                    break;
+                    
+                case 3:
+                    System.out.println(" Saindo do programa...");
+                    break;
+                default:
+                    System.out.println(" Opção inválida");
+                                     
+            }
+            
+        }
+        while(opcao != 3);
+        ler.close();
+    }
+    // Método para cadastrar um novo contato
+    public static void cadastrar(Scanner ler) 
+    {
+    for(int i = 0; i < agenda.length; i++)    
+    {
+        // Verifica se o nome está vazio (não cadastrado)
+        if(agenda[i][0]== null)
+        {
+            System.out.println(" Cadastrar novo contato: ");
+            
+            // Solicita os dados do contato
+            System.out.println(" Nome: ");
+            agenda[i][0] = ler.nextLine();
+            
+            System.out.println(" Endereço: ");
+            agenda[i][1] = ler.nextLine();
+            
+            System.out.println(" Cidade: ");
+            agenda[i][2] = ler.nextLine();
+            
+            System.out.println(" Telefone: ");
+            agenda[i][3] = ler.nextLine();
+            
+            System.out.println(" E-mail: ");
+            agenda[i][4] = ler.nextLine();
+            
+            System.out.println(" Cadastro realizado com sucesso ");
+            break;
+            
+            }
+        }
+    }
+    
+     // Método para listar todos os contatos cadastrados
+    public static void listar() 
+    {
+        boolean encontrou = false;
+        System.out.println("\n Lista de Contatos: ");
+        for (int i = 0; i < agenda.length; i++)
+        {
+            // Verifica se o nome não é nulo
+            if(agenda[i][0] != null)
+            {
+                System.out.println(" Nome " + agenda[i][0]);
+                System.out.println(" Endereço " + agenda[i][1]);
+                System.out.println(" Cidade "+ agenda[i][2]);
+                System.out.println(" Telefone " + agenda[i][3]);
+                System.out.println(" E-mail " + agenda[i][4]);
+                System.out.println("------------------------");
+                encontrou = true;
+            }
+        }
+        if(!= encontrou)
+        {
+            System.out.println(" Nenhum contato cadastrado ");
+        }
+    }
+    
+}
