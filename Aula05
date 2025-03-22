@@ -1,0 +1,56 @@
+package aula05;
+
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author 03020975
+ */
+public class CadAluno1 {
+
+    public static void main(String[] args) {
+        int opcao;
+        Scanner ler = new Scanner(System.in);
+
+        do {
+            System.out.println(" \n** Cadastro de Alunos **");
+            System.out.println(" 1 - Cadstrar");
+            System.out.println(" 2 - Listar ");
+            System.out.println(" 3 - Sair");
+            System.out.println("Opção: ");
+            opcao = Integer.parseInt(ler.nextLine());
+            if (opcao == 1) {
+                Aluno novo = new Aluno();
+                System.out.println("Digite o número da matrícula: ");
+                novo.numMatricula = Integer.parseInt(ler.nextLine());
+                System.out.println("Digite o nome do aluno: ");
+                novo.nomeAluno = ler.nextLine();
+                System.out.println("Digite o valor da mensalidade R$: ");
+                novo.vlrMensalidade = Double.parseDouble(ler.nextLine().replace(",", "."));
+                System.out.println("O aluno " + novo.nomeAluno + "número da matrícula" + novo.numMatricula + "paga de mensalidade R$ " + novo.vlrMensalidade);
+                Aluno.alunos.add(novo);
+            }
+            if (opcao == 2) {
+                System.out.println("\n***Lista de Alunos***");
+                if (Aluno.alunos.isEmpty()) {
+                    System.out.println("Não existem alunos cadastrados");
+                }
+                else {
+                    for (Aluno novo : Aluno.alunos {
+                                            
+                        System.out.println("Nome: " + novo.nomeAluno);
+                        System.out.println("Núnmero Matricula:" + novo.numMatricula);
+                        System.out.println("Valor Mensalidade" + novo.vlrMensalidade);
+                        System.out.println("---------------------");
+                    }
+                }
+            }
+        } while (opcao != 3);
+    }
+
+}
