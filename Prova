@@ -1,0 +1,150 @@
+Crie um programa para cadastramento de jogadores de futebol,
+no qual deverão constar, os seguintes dados:
+
+ Nome, idade, peso, altura, posição.
+
+Os jogadores deverão escolher entre o time do Inter ou o
+time do Grêmio.
+
+O Programa deverá conter um menu com as seguintes opções:
+
+1 – Cadastro de Jogadores.
+
+2 – Lista Time do Inter.
+
+3 – Lista Time do Grêmio.
+
+4 – Lista Todos os Jogadores.
+
+5 – Sair.
+Obs. O programa deverá ser demonstrado ao professor e também enviado pelo Google Classroom.
+Comentários da turma
+Seus trabalhos
+Entregue
+
+Prova.zip
+Arquivo compactado
+Comentários particulares
+
+package aula05;
+import java.util.Scanner;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Prova 
+{
+    static String[][] jogadores = new String[100][6]; // 100 jogadores, 6 campos (Nome, Idade, Peso, Altura, Posição, Time)
+    static int contador = 0;  // Contador de jogadores cadastrados
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1 - Cadastro de Jogadores");
+            System.out.println("2 - Lista Time do Inter");
+            System.out.println("3 - Lista Time do Gremio");
+            System.out.println("4 - Lista Todos os Jogadores");
+            System.out.println("5 - Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Consumir a nova linha
+
+            switch (opcao) {
+                case 1:
+                    cadastrarJogador(scanner);
+                    break;
+                case 2:
+                    listarTime("Inter");
+                    break;
+                case 3:
+                    listarTime("Gremio");
+                    break;
+                case 4:
+                    listarTodosOsJogadores();
+                    break;
+                case 5:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        } while (opcao != 5);
+
+        scanner.close();
+    }
+
+    public static void cadastrarJogador(Scanner scanner) {
+        if (contador >= jogadores.length) {
+            System.out.println("Limite de jogadores atingido.");
+            return;
+        }
+
+        System.out.print("Nome: ");
+        jogadores[contador][0] = scanner.nextLine();
+
+        System.out.print("Idade: ");
+        jogadores[contador][1] = scanner.nextLine();
+
+        System.out.print("Peso: ");
+        jogadores[contador][2] = scanner.nextLine();
+
+        System.out.print("Altura: ");
+        jogadores[contador][3] = scanner.nextLine();
+
+        System.out.print("Posição: ");
+        jogadores[contador][4] = scanner.nextLine();
+
+
+        String time;
+        do {
+            System.out.print("Escolha um time (Inter/Gremio): ");
+            time = scanner.nextLine();
+
+            if (!time.equalsIgnoreCase("Gremio") && !time.equalsIgnoreCase("Inter")) {
+                System.out.println("Time inválido. Escolha entre Inter ou Grêmio");
+            }
+        } while (!time.equalsIgnoreCase("Gremio") && !time.equalsIgnoreCase("Inter"));
+
+        jogadores[contador][5] = time; 
+        contador++;
+        System.out.println("Jogador cadastrado com sucesso!");
+    }
+
+    public static void listarTime(String time) {
+        System.out.println("\nJogadores do " + time + ":");
+        
+
+        for (int i = 0; i < contador; i++) {
+            if (jogadores[i][5].equalsIgnoreCase(time)) {
+                System.out.println("Nome: " + jogadores[i][0] + ", Idade: " + jogadores[i][1] + 
+                                   ", Peso: " + jogadores[i][2] + ", Altura: " + jogadores[i][3] + 
+                                   ", Posição: " + jogadores[i][4]);
+                
+            }
+        }
+
+        if (contador ==0) {
+            System.out.println("Nenhum jogador encontrado para o time " + time + ".");
+        }
+    }
+
+    public static void listarTodosOsJogadores() {
+        if (contador == 0) {
+            System.out.println("Nenhum jogador cadastrado.");
+            return;
+        }
+
+        System.out.println("\nTodos os Jogadores:");
+        for (int i = 0; i < contador; i++) {
+            System.out.println("Nome: " + jogadores[i][0] + ", Idade: " + jogadores[i][1] + 
+                               ", Peso: " + jogadores[i][2] + ", Altura: " + jogadores[i][3] + 
+                               ", Posição: " + jogadores[i][4] + ", Time: " + jogadores[i][5]);
+        }
+    }
+    
+}
+
