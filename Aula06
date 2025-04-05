@@ -108,4 +108,62 @@ public class PrimeiraClasse {
     
 }
 
+package aula06;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author 03020975
+ */
+public class SegundaClasse {
+    public static void main(String[] args) 
+    {
+        double n1, n2, n3, n4, n5;
+        Aluno exemplo = new Aluno();
+        Scanner ler = new Scanner (System.in);
+        String nome;
+     
+        
+        
+        System.out.println(" Nome do aluno: ");
+        nome = ler.nextLine();
+        System.out.println(" Nota em Banco de Dados 2: ");
+        n1 = Double.
+                parseDouble(ler.nextLine().replace(",", "."));
+        System.out.println(" Nota em Estrutura de Dados: ");
+        n2 = Double.
+                parseDouble(ler.nextLine().replace(",", "."));
+        System.out.println(" Nota em Semiotica: ");
+        n3 = Double.
+                parseDouble(ler.nextLine().replace(",", "."));
+        System.out.println(" Nota em C Sharp: ");
+        n4 = Double.
+                parseDouble(ler.nextLine().replace(",", "."));
+        System.out.println(" Nota em Java 1: ");
+        n5 = Double.
+                parseDouble(ler.nextLine().replace(",", "."));
+        
+        
+        Aluno novo = new Aluno(nome,n1,n2,n3,n4,n5);
+        //Exibindo os dados
+        System.out.println();
+        System.out.printf(" O aluno \"%s\" tirou: \n"
+                +"%2.2f em Banco de Dados 2,\n "
+                +"%2.2f em Semiótica, \n "
+                +"%2.2f em Estrutura de Dados, \n "
+                +"%2.2f em C#, \n "
+                +"%2.2f em Java, \n "
+                +"e obteve média %2.2f\n", novo.nome, novo.notaBancoDados2, novo.notaSemiotica,
+                novo.notaEstruturaDados, novo.notaCSharp,
+                novo.notaJava1, novo.media);
+        //Dentro do printf usamos \"
+
+
+        
+    }
+    
+}
+
+
 
