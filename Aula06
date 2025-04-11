@@ -1,3 +1,8 @@
+%s = String,
+%2.2f = número com decimal,
+%d = número inteiro.
+
+
 package aula06;
 import java.util.Date;
 
@@ -16,38 +21,39 @@ public class Funcionario {
     
 }
 
-
-package aula06;
+package Aula06;
 
 /**
  *
- * @author 03020975
+ * @author Tatiana
  */
 public class Aluno {
     public String nome;
     public double notaBancoDados2,
             notaEstruturaDados,
-            notaCSharp,
-            notaSemiotica,
-            notaJava1,
-            media;
-    public Aluno(String Nome, double Nota1,
-            double Nota2, double Nota3, 
+            notaCSharp, notaSemiotica,
+            notaJava1, media;
+    
+    public Aluno(String Nome, double Nota1, double Nota2, double Nota3,
             double Nota4, double Nota5)
+            
     {
-        nome=Nome;
+        nome = Nome;
         notaBancoDados2 = Nota1;
         notaEstruturaDados = Nota2;
-        notaCSharp = Nota3;
-        notaSemiotica = Nota4;
+        notaSemiotica = Nota3;
+        notaCSharp = Nota4;
         notaJava1 = Nota5;
-        media = (Nota1 + Nota2 + Nota3 + Nota4 + Nota5)/5;
+        media = (Nota1 + Nota2 + Nota3 + Nota4 + Nota5) / 5;
     }
+    
     public Aluno()
     {
         
     }
+    //se não tiver isso dá problema no primeira classe
 }
+
 
 
 
@@ -66,101 +72,82 @@ public class PrimeiraClasse {
         System.out.println(" Nome do aluno: ");
         exemplo.nome = entrada.nextLine();
         System.out.println(" Nota em Banco de Dados 2: ");
-        exemplo.notaBancoDados2 = Double.
-                parseDouble(entrada.nextLine().replace(",", "."));
+        exemplo.notaBancoDados2 = Double.parseDouble(entrada.nextLine().replace(",","."));
         System.out.println(" Nota em Estrutura de Dados: ");
-        exemplo.notaEstruturaDados = Double.
-                parseDouble(entrada.nextLine().replace(",", "."));
+        exemplo.notaEstruturaDados = Double.parseDouble(entrada.nextLine().replace(",","."));
         System.out.println(" Nota em Semiotica: ");
-        exemplo.notaSemiotica = Double.
-                parseDouble(entrada.nextLine().replace(",", "."));
-        System.out.println(" Nota em C Sharp: ");
-        exemplo.notaCSharp = Double.
-                parseDouble(entrada.nextLine().replace(",", "."));
-        System.out.println(" Nota em Java 1: ");
-        exemplo.notaJava1 = Double.
-                parseDouble(entrada.nextLine().replace(",", "."));
-        //calcular a média do aluno no semestre
-        media = exemplo.notaJava1
-                + (exemplo.notaBancoDados2
-                + exemplo.notaSemiotica
+        exemplo.notaSemiotica = Double.parseDouble(entrada.nextLine().replace(",","."));
+        System.out.println(" Nota em CSharp: ");
+        exemplo.notaCSharp = Double.parseDouble(entrada.nextLine().replace(",","."));
+        System.out.println(" Nota em Java1: ");
+        exemplo.notaJava1 = Double.parseDouble(entrada.nextLine().replace(",","."));
+        
+        //Calcular a média do aluno no semestre
+        media = (exemplo.notaBancoDados2
                 + exemplo.notaEstruturaDados
-                + exemplo.notaCSharp) / 5;
+                + exemplo.notaSemiotica
+                + exemplo.notaCSharp
+                + exemplo.notaJava1)/5;
         exemplo.media = media;
-        
-        //Exibindo os dados 
+        //Exibindo os dados
         System.out.println();
-        System.out.printf(" O aluno \"%s\" tirou: \n"
-                +"%2.2f em Banco de Dados 2,\n "
-                +"%2.2f em Semiótica, \n "
-                +"%2.2f em Estrutura de Dados, \n "
-                +"%2.2f em C#, \n "
-                +"%2.2f em Java, \n "
-                +"e obteve média %2.2f\n", exemplo.nome, exemplo.notaBancoDados2, exemplo.notaSemiotica,
-                exemplo.notaEstruturaDados, exemplo.notaCSharp,
-                exemplo.notaJava1, media);
-        
-        // Dentro do printf usamos \" para exibir aspas duplas
-        
-        
-        
+        System.out.printf(" O aluno\"%s\" tirou:\n"
+        + "%2.2f em Banco de Dados 2,\n"
+        + "%2.2f em Estrutura de Dados,\n"
+        + "%2.2f em Semiótica,\n"
+        + "%2.2f em C#,\n"
+        + "%2.2f Java1,\n"
+        + " e obteve média %2.2f\n", exemplo.nome, exemplo.notaBancoDados2,
+        exemplo.notaEstruturaDados, exemplo.notaSemiotica, exemplo.notaCSharp,
+        exemplo.notaJava1, media);
+
+        //Dentro do printf usamos \"para exibir aspas duplas
     }
-    
 }
 
-package aula06;
 
+package Aula06;
 import java.util.Scanner;
 
 /**
  *
- * @author 03020975
+ * @author Tatiana
  */
 public class SegundaClasse {
     public static void main(String[] args) 
     {
-        double n1, n2, n3, n4, n5;
-        Aluno exemplo = new Aluno();
-        Scanner ler = new Scanner (System.in);
-        String nome;
-     
-        
-        
+    double n1, n2, n3, n4, n5;
+    Aluno exemplo = new Aluno();
+    Scanner ler = new Scanner (System.in);
+    String nome;
+    
         System.out.println(" Nome do aluno: ");
         nome = ler.nextLine();
         System.out.println(" Nota em Banco de Dados 2: ");
-        n1 = Double.
-                parseDouble(ler.nextLine().replace(",", "."));
+        n1 = Double.parseDouble(ler.nextLine().replace(",","."));
         System.out.println(" Nota em Estrutura de Dados: ");
-        n2 = Double.
-                parseDouble(ler.nextLine().replace(",", "."));
-        System.out.println(" Nota em Semiotica: ");
-        n3 = Double.
-                parseDouble(ler.nextLine().replace(",", "."));
-        System.out.println(" Nota em C Sharp: ");
-        n4 = Double.
-                parseDouble(ler.nextLine().replace(",", "."));
-        System.out.println(" Nota em Java 1: ");
-        n5 = Double.
-                parseDouble(ler.nextLine().replace(",", "."));
+        n2 = Double.parseDouble(ler.nextLine().replace(",","."));
+        System.out.println(" Nota em Semiótica: ");
+        n3 = Double.parseDouble(ler.nextLine().replace(",","."));
+        System.out.println(" Nota em C#: ");
+        n4 = Double.parseDouble(ler.nextLine().replace(",","."));
+        System.out.println(" Nota em Java1: ");
+        n5 = Double.parseDouble(ler.nextLine().replace(",","."));
         
-        
-        Aluno novo = new Aluno(nome,n1,n2,n3,n4,n5);
+        Aluno novo = new Aluno( nome, n1, n2, n3, n4, n5);
         //Exibindo os dados
         System.out.println();
         System.out.printf(" O aluno \"%s\" tirou: \n"
-                +"%2.2f em Banco de Dados 2,\n "
-                +"%2.2f em Semiótica, \n "
-                +"%2.2f em Estrutura de Dados, \n "
-                +"%2.2f em C#, \n "
-                +"%2.2f em Java, \n "
-                +"e obteve média %2.2f\n", novo.nome, novo.notaBancoDados2, novo.notaSemiotica,
-                novo.notaEstruturaDados, novo.notaCSharp,
-                novo.notaJava1, novo.media);
-        //Dentro do printf usamos \"
+        + "%2.2f em Banco de Dados 2, \n"
+        + "%2.2f em Estrutura de Dados, \n"
+        + "%2.2f em Semiótica, \n"
+        + "%2.2f em C#, \n"
+        + "%2.2f em Java1, \n"
+        + " e obteve média %2.2f\n", novo.nome, novo.notaBancoDados2,
+        novo.notaEstruturaDados, novo.notaSemiotica, novo.notaCSharp,
+        novo.notaJava1, novo.media);
+         //Dentro do printf usamos \"
 
-
-        
     }
     
 }
