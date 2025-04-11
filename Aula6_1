@@ -1,0 +1,155 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class Aluno {
+    public String nome;
+    public double notaBancoDados2,
+            notaEstruturaDados,
+            notaCSharp, notaSemiotica,
+            notaJava1, media;
+    
+    public Aluno(String Nome, double Nota1, double Nota2, double Nota3,
+            double Nota4, double Nota5)
+            
+    {
+        nome = Nome;
+        notaBancoDados2 = Nota1;
+        notaEstruturaDados = Nota2;
+        notaSemiotica = Nota3;
+        notaCSharp = Nota4;
+        notaJava1 = Nota5;
+        media = (Nota1 + Nota2 + Nota3 + Nota4 + Nota5) / 5;
+    }
+    
+    public Aluno() //se não tiver isso dá problema no primeira classe
+    {
+        
+    }
+
+
+    
+public static List<Aluno> alunos = new ArrayList();
+}
+
+
+package Aula06;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class TerceiraClasse {
+     static String[][] lista = new String[100][7];
+    
+    public static void main(String[] args) 
+    {
+        double n1, n2, n3, n4, n5;
+        Aluno exemplo = new Aluno();
+        Scanner ler = new Scanner (System.in);
+        String nome;
+        int opcao=0;
+        
+        do
+        {
+            System.out.println(" ---Lista Alunos---");
+            System.out.println(" 1 - Cadastrar ");
+            System.out.println(" 2 - Listar ");
+            System.out.println(" 3 - Sair ");
+            System.out.println(" Digite a opção ");
+            opcao = Integer.parseInt(ler.nextLine());
+            
+            switch (opcao)
+            {
+                case 1:
+                    cadastrar(ler);
+                    break;
+                
+                case 2:
+                    listar();
+                    break;
+                    
+                case 3:
+                    System.out.println(" Saindo do programa...");
+                    break;
+                default:
+                    System.out.println(" Opção inválida");
+                                     
+            }
+            
+        }
+        while(opcao != 3);
+        ler.close();
+    }
+// Método para cadastrar um novo contato
+    public static void cadastrar(Scanner ler) 
+    {
+    for(int i = 0; i < lista.length; i++)    
+    {
+        // Verifica se o nome está vazio (não cadastrado)
+        if(lista[i][0]== null)
+        {
+            System.out.println(" Cadastrar novo contato: ");
+            
+            // Solicita os dados do contato
+            System.out.println(" Nome: ");
+            lista[i][0] = ler.nextLine();
+            
+            System.out.println(" Nota Banco de Dados 2: ");
+            lista[i][1] = ler.nextLine();
+            
+            System.out.println(" Nota Estrutura de Dados: ");
+            lista[i][2] = ler.nextLine();
+            
+            System.out.println(" Nota Semiótica: ");
+            lista[i][3] = ler.nextLine();
+            
+            System.out.println(" Nota C#: ");
+            lista[i][4] = ler.nextLine();
+            
+            System.out.println(" Nota Java1: ");
+            lista[i][5] = ler.nextLine();
+            
+            System.out.println(" Média: ");
+            lista[i][6] = ler.nextLine();
+            
+            System.out.println(" Cadastro realizado com sucesso ");
+            break;
+            
+            }
+        }
+    }
+    
+     // Método para listar todos os contatos cadastrados
+    public static void listar() 
+    {
+        boolean encontrou = false;
+        System.out.println("\n Lista de Alunos: ");
+        for (int i = 0; i < lista.length; i++)
+        {
+            // Verifica se o nome não é nulo
+            if(lista[i][0] != null)
+            {
+                System.out.println(" Nome " + lista[i][0]);
+                System.out.println(" Nota Banco de Dados 2 " + lista[i][1]);
+                System.out.println(" Nota Estrutura de Dados "+ lista[i][2]);
+                System.out.println(" Nota Semiótica " + lista[i][3]);
+                System.out.println(" Nota C# " + lista[i][4]);
+                System.out.println(" Nota Java1 " + lista[i][5]);
+                System.out.println(" Média " + lista[i][6]);
+                System.out.println("------------------------");
+                encontrou = true;
+            }
+        }
+        if(!= encontrou)
+        {
+            System.out.println(" Nenhum aluno cadastrado ");
+        }
+    }
+    
+}
+
