@@ -153,4 +153,42 @@ public class SegundaClasse {
 }
 
 
+package aula06;
+import java.util.Date;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Funcionario {
+    int codigo;
+    String nome;
+    int idade;
+    Date dtNascimento;
+    Date dtAdmissao;
+    double salario;
+    
+    //gerar manualmente
+    public Funcionario(int codigo, String nome, double salario)
+    {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.salario = salario;
+        
+    }
+//gerar automático
+    public Funcionario(int codigo, String nome, int idade, Date dtNascimento, Date dtAdmissao, double salario) 
+    {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.idade = idade;
+        this.dtNascimento = dtNascimento;
+        this.dtAdmissao = dtAdmissao;
+        this.salario = salario;
+    }
+    
+}
+
+
+
 
