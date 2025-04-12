@@ -1,0 +1,157 @@
+package aula07;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Conta 
+{
+String dono;
+int numero;
+double saldo;
+
+    public Conta(String dono, int numero, double saldo) {
+        this.dono = dono;
+        this.numero = numero;
+        this.saldo = saldo;
+    }
+
+    public Conta() 
+    {
+    }
+    
+    public boolean sacar(double vlr)
+    {
+        if(this.saldo < vlr)
+        {
+            return false;
+        }
+        else
+        {
+            this.saldo = this.saldo - vlr;
+            return true;
+        }
+    
+    }
+
+
+}
+
+package aula07;
+import java.util.Scanner;
+/**
+ *
+ * @author 03020975
+ */
+public class CadConta 
+{
+    public static void main(String[] args) 
+    {
+        Scanner ler = new Scanner(System.in);
+        String nome;
+        int num;
+        double vlr;
+        
+        System.out.println("***Cadastro de Conta***");
+        System.out.println(" Digite o nome do Cliente: ");
+        nome = ler.nextLine();
+        System.out.println(" Digite o número da conta: ");
+        num = Integer.parseInt(ler.nextLine());
+        System.out.println(" Digite o valor deposito inicial R$ ");
+        vlr = Double.parseDouble(ler.nextLine().replace(",","."));
+        
+        Conta nova = new Conta(nome, num, vlr);
+        System.out.printf(" O cliente %s conta número %d saldo R$ %.2f"
+        + " foi incluída com sucesso!", nova.dono, nova.numero, nova.saldo);
+        
+        System.out.println("\n\nDigite o valor a sacar R$ ");
+        boolean consegui = nova.sacar(Double.parseDouble(ler.nextLine().replace(",",".")));
+        if (consegui)
+        {
+            System.out.printf(" O seu novo saldo é de R$ %.2f", nova.saldo);
+        }
+        else
+        {
+            System.out.println(" Saque não realizado!");
+        }
+    }
+    
+}
+
+public class Funcionario 
+{
+    private String nome;
+    private int codigo;
+    private double salario;
+    public static List<Funcionario> lista = new ArrayList();
+
+    public Funcionario() 
+    {
+    }
+
+    public Funcionario(String nome, int codigo, double salario) {
+        this.nome = nome;
+        this.codigo = codigo;
+        this.salario = salario;
+    }
+
+    public String getNome() {
+       return nome;
+    }
+    
+  public void setNome(String nome)
+    {
+        this.nome = nome;
+    }    
+  public int getCodigo()
+  {
+      return codigo;
+      
+  }
+  
+  public void setCodigo(int codigo)
+  {
+      this.codigo = codigo;
+  }
+    public double getSalario()
+    {
+        return salario;
+    }
+    
+    public void setSalario(double salario)
+    {
+        this.salario = salario;
+    }
+       
+}
+
+
+package aula07;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+/**
+ *
+ * @author 03020975
+ */
+public class CadFuncionario 
+{
+    static String[][] lista = new String[100][7];
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        Funcionario func = new Funcionario();
+        System.out.println(" Digite o nome do Funcionario: ");
+        func.setNome(ler.nextLine());
+        System.out.println(" Digite o codigo: ");
+        func.setCodigo((Integer.parseInt(ler.nextLine())));
+        System.out.println(" Digite o salario R$ ");
+        func.setSalario(Double.parseDouble(ler.nextLine().replace(",",".")));
+        System.out.printf("\nO funcionario %s com número %d" + "foi criado com sucesso)",
+                func.getNome(), func.getCodigo());
+        Funcionario.lista.add(func);
+        
+          
+    }
+    
+}
