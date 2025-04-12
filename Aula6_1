@@ -36,15 +36,15 @@ public static List<Aluno> alunos = new ArrayList();
 }
 
 
-package Aula06;
+package aula06;
 import java.util.Scanner;
 
 /**
  *
- * @author Tatiana
+ * @author 03020975
  */
 public class TerceiraClasse {
-     static String[][] lista = new String[100][7];
+    static String[][] lista = new String[100][7];
     
     public static void main(String[] args) 
     {
@@ -145,7 +145,7 @@ public class TerceiraClasse {
                 encontrou = true;
             }
         }
-        if(!= encontrou)
+        if(! encontrou)
         {
             System.out.println(" Nenhum aluno cadastrado ");
         }
