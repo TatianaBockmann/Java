@@ -1,0 +1,169 @@
+package Aula07;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class Funcionario {
+    private String nome;
+    private int codigo;
+    private double salario;
+    public static List<Funcionario> lista = new ArrayList();
+
+    public Funcionario() 
+    {
+    }
+
+    public Funcionario(String nome, int codigo, double salario) {
+        this.nome = nome;
+        this.codigo = codigo;
+        this.salario = salario;
+    }
+
+    public String getNome() {
+       return nome;
+    }
+    
+  public void setNome(String nome)
+    {
+        this.nome = nome;
+    }    
+  public int getCodigo()
+  {
+      return codigo;
+      
+  }
+  
+  public void setCodigo(int codigo)
+  {
+      this.codigo = codigo;
+  }
+    public double getSalario()
+    {
+        return salario;
+    }
+    
+    public void setSalario(double salario)
+    {
+        this.salario = salario;
+    }
+       
+}
+
+    
+package Aula07;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class CadFuncionario {
+     static String[][] lista = new String[100][3];
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        Funcionario func = new Funcionario();
+        int opcao = 0;
+        
+        do
+        {
+            System.out.println(" ---Lista Funcionários---");
+            System.out.println(" 1 - Cadastrar ");
+            System.out.println(" 2 - Listar ");
+            System.out.println(" 3 - Sair ");
+            System.out.println(" Digite a opção ");
+            opcao = Integer.parseInt(ler.nextLine());
+            
+            switch (opcao)
+            {
+                case 1:
+                    cadastrar(ler);
+                    break;
+                
+                case 2:
+                    listar();
+                    break;
+                    
+                case 3:
+                    System.out.println(" Saindo do programa...");
+                    break;
+                default:
+                    System.out.println(" Opção inválida");
+                                     
+            }
+            
+        }
+        while(opcao != 3);
+        ler.close();
+    }
+      // Método para cadastrar um novo contato
+    public static void cadastrar(Scanner ler) {
+        for (int i = 0; i < lista.length; i++) {
+        // Verifica se o nome está vazio (não cadastrado)
+        if (lista[i][0] == null) {
+            System.out.println(" Cadastrar novo funcionário: ");
+            
+            // Solicita os dados do funcionário
+            System.out.print(" Nome: ");
+            lista[i][0] = ler.nextLine();
+            
+            // Validação para o código do funcionário
+            String codigo;
+            do {
+                System.out.print(" Código do funcionário: ");
+                codigo = ler.nextLine();
+                if (codigo.isEmpty()) {
+                    System.out.println(" O código não pode ser vazio. Tente novamente.");
+                }
+            } while (codigo.isEmpty());
+            lista[i][1] = codigo;
+            
+            // Validação para o salário
+            boolean salarioValido = false;
+            double salario = 0;
+            while (!salarioValido) {
+                System.out.print(" Salário do funcionário: ");
+                String salarioInput = ler.nextLine();
+                try {
+                    salario = Double.parseDouble(salarioInput);
+                    if (salario < 0) {
+                        System.out.println(" O salário não pode ser negativo. Tente novamente.");
+                    } else {
+                        lista[i][2] = String.valueOf(salario);
+                        salarioValido = true;
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println(" Valor inválido. Insira um número válido para o salário.");
+                }
+            }
+
+            System.out.printf(" Funcionário %s, código %s, salário %.2f, cadastrado com sucesso!\n", 
+                              lista[i][0], lista[i][1], salario);
+            break; 
+        }
+    }
+  }
+public static void listar() {
+        boolean encontrou = false;
+        System.out.println("\n Lista de Funcionários: ");
+        for (int i = 0; i < lista.length; i++) {
+            // Verifica se o nome não é nulo
+            if (lista[i][0] != null) {
+                System.out.println(" Nome: " + lista[i][0]);
+                System.out.println(" Código do Funcionário: " + lista[i][1]);
+                System.out.println(" Salário do Funcionário: R$ " + lista[i][2]);
+                System.out.println("------------------------");
+                encontrou = true;
+            }
+        }
+        if (!encontrou) {
+            System.out.println(" Nenhum funcionário cadastrado.");
+        }
+    }
+    
+    
+}
