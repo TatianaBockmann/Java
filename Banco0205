@@ -1,0 +1,139 @@
+package Banco;
+
+import java.util.Random;
+import java.util.Scanner;
+import java.util.ArrayList;
+/**
+ *
+ * @author Tatiana
+ */
+public class Banco {
+     static String[][] lista = new String[100][3];
+   
+    public static void main(String[] args)
+    {
+        Scanner ler = new Scanner(System.in);
+        Random numero = new Random();
+        Conta nova = new Conta();
+        String nome;
+        int num;
+       
+
+ int opcao = 0;
+       
+        do
+        {
+            System.out.println(" ---Banco Java---");
+            System.out.println(" 1 - Criar Conta ");
+            System.out.println(" 2 - Movimentar Conta ");
+            System.out.println(" 3 - Listar Contas ");
+            System.out.println(" 4 - Sair ");
+            System.out.println(" Digite a opção ");
+            opcao = Integer.parseInt(ler.nextLine());
+           
+            switch (opcao)
+            {
+                case 1:
+                    criarContaCorrente(ler);
+                    break;
+               
+                case 2:
+                    movimentarConta(ler);
+                    break;
+                case 3:
+                    listarContas(ler);
+                    break;
+                   
+                case 4:
+                    System.out.println(" Saindo do programa...");
+                    break;
+                default:
+                    System.out.println(" Opção inválida");
+                                     
+            }
+           
+        }
+        while(opcao != 4);
+        ler.close();
+    }
+    
+    public static void criarContaCorrente(Scanner ler) {
+        for (int i = 0; i < lista.length; i++) {
+        // Verifica se o nome está vazio (não cadastrado)
+        if (lista[i][0] == null) {
+            System.out.println(" Cadastrar nova conta: ");
+           
+            // Solicita os dados do cliente
+            System.out.print(" Nome: ");
+            lista[i][0] = ler.nextLine();
+           
+           // Validação depósito inicial
+            boolean depositoValido = false;
+            double deposito = 0;
+            while (!depositoValido) {
+                System.out.print(" Depósito inicial: ");
+                String deposito = ler.nextLine();
+                try {
+                    deposito = Double.parseDouble(depositoInput);
+                    if (deposito < 0) {
+                        System.out.println(" O depósito não pode ser negativo. Tente novamente.");
+                    } else {
+                        lista[i][2] = String.valueOf(deposito);
+                        depositoValido = true;
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println(" Valor inválido. Insira um número válido para o depósito.");
+                }
+            }
+
+            System.out.printf(" A conta de %s, numConta, tem saldo de %.2f, criada com sucesso!\n",
+                              lista[i][0], lista[i][1]);
+            break;
+        }
+    }
+  }
+   
+    public static void movimentarConta(Scanner ler)
+    {
+        int opcao = 0;
+       
+        do
+        {
+            System.out.println(" ---Movimentacao de Conta---");
+            System.out.println(" 1 - Sacar ");
+            System.out.println(" 2 - Depositar ");
+            System.out.println(" 3 - Extrato ");
+            System.out.println(" 4 - Sair ");
+            System.out.println(" Digite a opção ");
+            opcao = Integer.parseInt(ler.nextLine());
+           
+            switch (opcao)
+            {
+                case 1:
+                   
+                    break;
+               
+                case 2:
+                   
+                    break;
+                case 3:
+                   
+                    break;
+                   
+                case 4:
+                    System.out.println(" Saindo do programa...");
+                    break;
+                default:
+                    System.out.println(" Opção inválida");
+                                     
+            }
+           
+        }
+       
+    }
+
+    private static void listarContas(Scanner ler) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+}
