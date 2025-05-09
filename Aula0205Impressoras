@@ -1,0 +1,299 @@
+public class Impressora 
+{
+    
+    private String marca;
+    private String modelo;
+    private boolean colorida;
+    private double peso;
+
+    public Impressora(String marca, String modelo, boolean colorida, double peso) 
+    {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.colorida = colorida;
+        this.peso = peso;
+    }
+
+    public String getMarca() 
+    {
+        return marca;
+    }
+
+    public void setMarca(String marca) 
+    {
+        this.marca = marca;
+    }
+
+    public String getModelo() 
+    {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) 
+    {
+        this.modelo = modelo;
+    }
+
+    public boolean isColorida() 
+    {
+        return colorida;
+    }
+
+    public void setColorida(boolean colorida) 
+    {
+        this.colorida = colorida;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) 
+    {
+        this.peso = peso;
+    }
+
+    @Override
+    public String toString() 
+    {
+        return "Marca: " + marca + ", Modelo: " + modelo + ", Colorida: " + colorida + ", Peso: " + peso + "kg";
+    }
+}
+    
+
+package Aula0205;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class Matricial extends Impressora 
+{
+    
+    private int numAgulhas;
+    private boolean imprimeVias;
+
+    public Matricial(String marca, String modelo, boolean colorida, double peso, int numAgulhas, boolean imprimeVias) 
+    {
+        super(marca, modelo, colorida, peso);
+        this.numAgulhas = numAgulhas;
+        this.imprimeVias = imprimeVias;
+    }
+
+    public int getNumAgulhas() 
+    {
+        return numAgulhas;
+    }
+
+    public void setNumAgulhas(int numAgulhas) 
+    {
+        this.numAgulhas = numAgulhas;
+    }
+
+    public boolean isImprimeVias() 
+    {
+        return imprimeVias;
+    }
+
+    public void setImprimeVias(boolean imprimeVias) 
+    {
+        this.imprimeVias = imprimeVias;
+    }
+
+    @Override
+    public String toString() 
+    {
+        return super.toString() + ", Num Agulhas: " + numAgulhas + ", Imprime Vias: " + imprimeVias;
+    }
+}
+    
+
+
+package Aula0205;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class Laser extends Impressora 
+{
+    
+    private double capacidadeToner;
+    private boolean frenteVerso;
+
+    public Laser(String marca, String modelo, boolean colorida, double peso, double capacidadeToner, boolean frenteVerso) 
+    {
+        super(marca, modelo, colorida, peso);
+        this.capacidadeToner = capacidadeToner;
+        this.frenteVerso = frenteVerso;
+    }
+
+    public double getCapacidadeToner() 
+    {
+        return capacidadeToner;
+    }
+
+    public void setCapacidadeToner(double capacidadeToner) 
+    {
+        this.capacidadeToner = capacidadeToner;
+    }
+
+    public boolean isFrenteVerso() {
+        return frenteVerso;
+    }
+
+    public void setFrenteVerso(boolean frenteVerso) 
+    {
+        this.frenteVerso = frenteVerso;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Capacidade Toner: " + capacidadeToner + "ml, Frente e Verso: " + frenteVerso;
+    }
+}
+    
+
+package Aula0205;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class SistemaDeImpressoras {
+    
+    public static void main(String[] args) {
+        
+        Scanner ler = new Scanner(System.in);
+        List<Matricial> matriciais = new ArrayList<>();
+        List<Laser> lasers = new ArrayList<>();
+
+        int opcao;
+        do {
+            System.out.println("\n--- Impressoras ---");
+            System.out.println("1. Cadastrar Impressora Matricial");
+            System.out.println("2. Cadastrar Impressora Laser");
+            System.out.println("3. Listar Impressoras Matriciais");
+            System.out.println("4. Listar Impressoras Laser");
+            System.out.println("5. Listar Todas Impressoras");
+            System.out.println("6. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = Integer.parseInt(ler.nextLine());
+            
+            switch (opcao) 
+            {
+                case 1: 
+                {
+                    System.out.print("Marca: ");
+                    String marca = ler.nextLine();
+                    System.out.print("Modelo: ");
+                    String modelo = ler.nextLine();
+                    System.out.print("Número de Agulhas: ");
+                    int numAgulhas = Integer.parseInt(ler.nextLine());
+                    System.out.print("Colorida (true/false): ");
+                    boolean colorida = ler.nextBoolean();        
+                    System.out.print("Imprime Vias (true/false): ");
+                    boolean imprimeVias = ler.nextBoolean();
+                    ler.nextLine();
+                    System.out.print("Peso (kg): ");
+                    double peso = Double.parseDouble(ler.nextLine().replace(",", "."));
+                    ler.nextLine();
+                    
+                    Matricial m = new Matricial(marca, modelo, colorida, peso, numAgulhas, imprimeVias);
+                    matriciais.add(m);
+                    System.out.println("Impressora Matricial cadastrada!");
+                }
+                break;
+                
+                case 2:
+                    {
+                    System.out.print("Marca: ");
+                    String marca = ler.nextLine();
+                    System.out.print("Modelo: ");
+                    String modelo = ler.nextLine();
+                    System.out.print("Colorida (true/false): ");
+                    boolean colorida = ler.nextBoolean();
+                    System.out.print("Peso (kg): ");
+                    double peso = Double.parseDouble(ler.nextLine().replace(",", "."));
+                    ler.nextLine();
+                    System.out.print("Capacidade do Toner (ml): ");
+                    double capacidadeToner = Double.parseDouble(ler.nextLine().replace(",", "."));
+                    ler.nextLine();
+                    System.out.print("Frente e Verso (true/false): ");
+                    boolean frenteVerso = ler.nextBoolean();
+                    ler.nextLine();
+
+                    Laser l = new Laser(marca, modelo, colorida, peso, capacidadeToner, frenteVerso);
+                    lasers.add(l);
+                    System.out.println("Impressora Laser cadastrada!");
+                    ler.nextLine(); 
+                }
+                    break;
+
+                case 3:
+                {
+                     System.out.println("\n--- Impressoras Matriciais ---");
+                    if (matriciais.isEmpty()) 
+                    {
+                        System.out.println("Nenhuma impressora matricial cadastrada.");
+                    } else {
+                        for (Matricial m : matriciais) 
+                        {
+                            System.out.println(m);
+                        }
+                    }
+                }
+                break;
+                
+
+                case 4: 
+                {
+                   System.out.println("\n--- Impressoras Laser ---");
+                    if (lasers.isEmpty()) {
+                        System.out.println("Nenhuma impressora laser cadastrada.");
+                    } else 
+                    {
+                        for (Laser l : lasers) {
+                            System.out.println(l);
+                        }
+                    }
+                }
+                break;
+
+                case 5: 
+                {
+                    System.out.println("\n--- Todas as Impressoras ---");
+                    if (matriciais.isEmpty() && lasers.isEmpty()) {
+                        System.out.println("Nenhuma impressora cadastrada.");
+                    } else {
+                        for (Matricial m : matriciais) System.out.println(m);
+                        for (Laser l : lasers) System.out.println(l);
+                    }
+                    System.out.println("Encerrando o programa...");
+                }
+                    break;
+                    
+                    case 6:
+                                    
+                    System.out.println(" Saindo do programa...");
+                    
+                    break;
+                    
+                    default:
+                    System.out.println(" Opção inválida");           
+
+            }
+
+        } while (opcao != 6);
+
+        ler.close();
+   
+        
+    }
+    
+}    
+
