@@ -1,0 +1,250 @@
+private String nome;
+private int numero;
+private double saldo;
+private double limiteDiario;
+
+public static List<Conta> contas = new ArrayList();
+public static Scanner ler = new Scanner(System.in);
+
+
+public Conta(String nome, int numero, double saldo) {
+        this.nome = nome;
+        this.numero = numero;
+        this.saldo = saldo;
+        this.limiteDiario = 1000;
+    }
+
+    Conta(String nome, double deposito, int numero) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+public void menu()
+{
+    int opcao;
+    do
+    {
+        System.out.println("\n ---Movimentação Conta---");
+            System.out.println(" 1 - Sacar ");
+            System.out.println(" 2 - Depositar ");
+            System.out.println(" 3 - Extrato ");
+            System.out.println(" 4 - Sair ");
+            System.out.println(" Digite a opção ");
+            opcao = Integer.parseInt(ler.nextLine());
+           
+            switch (opcao)
+            {
+                case 1:
+                    sacar(ler);
+                    break;
+               
+                case 2:
+                    depositar(ler);
+                    break;
+                case 3:
+                    mostrarExtrato();
+                    break;
+                   
+                case 4:
+                    System.out.println(" Saindo do programa...");
+                    break;
+                default:
+                    System.out.println(" Opção inválida");
+                                     
+            }
+           
+        }
+        while(opcao != 4);
+        ler.close();
+    }
+
+    private void sacar(Scanner ler) {
+        double valor;
+        System.out.println("\n---Sacar---");
+        System.out.println(" Digite o valor do saque R$: ");
+        valor = Double.parseDouble(ler.nextLine().replace(",","."));
+        if (this.limiteDiario >= valor)
+        {
+            if(this.limiteDiario >= valor)
+            {
+            this.saldo -= valor;
+            this.limiteDiario -= valor;
+            System.out.println(" Saque realizado com sucesso!");    
+            }
+            else
+            {
+            System.out.println(" Limite diário excedido!");
+            }
+        }
+        else
+        {
+            System.out.println(" Saldo insuficiente!");  
+       
+        }
+   
+}
+
+    private void depositar(Scanner ler) {
+        double valor;
+        System.out.println("\n---Deposito---");    
+        System.out.println(" Informe o valor do depósito R$: ");
+        valor = Double.parseDouble(ler.nextLine().replace(",","."));
+        this.saldo += valor;
+        System.out.printf(" O novo saldo é de R$.2f ", this.saldo);
+       
+    }
+
+    private void mostrarExtrato() {
+        System.out.println("\n---Extrato---");
+        System.out.println(" Cliente: " + this.getNome());
+        System.out.println(" Número da Conta: " + this.getNumero());
+        System.out.printf(" Saldo R$ %.2f\n", this.getLimiteDiario());
+    }
+
+  public String getNome() {
+       return nome;
+    }
+   
+  public void setNome(String nome)
+    {
+        this.nome = nome;
+    }    
+   
+  public int getNumero()
+  {
+      return numero;
+     
+  }
+  public void setNumero(int numero)
+    {
+        this.numero = numero;
+    }    
+  public double getSaldo()
+  {
+      return saldo;
+     
+  }
+ 
+  public void setSaldo(double saldo)
+  {
+        this.saldo = saldo;
+  }
+
+    public double getLimiteDiario() {
+        return limiteDiario;
+    }
+
+    public void setLimiteDiario(double limiteDiario) {
+        this.limiteDiario = limiteDiario;
+    }
+
+}
+
+
+package Aula082504;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author 03020975
+ */
+public class CaixaEletronico {
+     public static Scanner ler = new Scanner (System.in);
+   
+    public static void main(String[] args)
+    {
+        int opcao;
+       
+        do
+        {
+            System.out.println("*** Banco Java ***");
+            System.out.println("Menu de opções: ");
+            System.out.println("1 - Criar conta corrente");
+            System.out.println("2 - Movimentar conta");
+            System.out.println("3 - Listar contas");
+            System.out.println("4 - Sair");
+            System.out.println("Opção: ");
+            opcao = Integer.parseInt(ler.nextLine());
+            if (opcao==1)
+            {
+                criarConta();
+            }
+            if (opcao==2)
+            {
+                MovimentarConta();
+            }
+           
+            if (opcao==3)
+            {
+                listarContas();
+            }                    
+        } while (opcao!=4);
+    }
+   
+        public static void criarConta()
+    {
+        String nome;
+        int numero;
+        double deposito;
+        Random num = new Random();
+        System.out.println("Digite o nome");
+        nome = ler.nextLine();
+        System.out.println("Digite o valor para o depósito inicial: ");
+        deposito = Double.parseDouble(ler.nextLine().replace(",", "."));
+        numero = 1 + num.nextInt(9999);
+        Conta nova = new Conta(nome,deposito,numero);
+        Conta.contas.add(nova);
+        System.out.printf("A conta de %s de numero %d com saldo de R$ %.2f foi criada com sucesso!", nova.getNome(), nova.getNumero(), nova.getSaldo());
+       
+    }
+ 
+    public static void MovimentarConta()
+    {
+       if(Conta.contas.isEmpty())
+       {
+           System.out.println("Sem contas cadastradas!");
+       }
+       else
+       {
+         int numero;
+         boolean achei=false;
+           System.out.println("Digite a conta que deseja movimentar: ");
+           numero = Integer.parseInt(ler.nextLine());
+           for (Conta cc : Conta.contas)
+           {
+               if(cc.getNumero() ==numero)
+               {
+                   cc.menu();
+                   achei = true;
+                   break;
+               }
+           }
+       }
+    }
+   
+
+   
+    public static void listarContas()
+    {
+        if (Conta.contas.isEmpty())
+        {
+            System.out.println("Sem contas cadastradas!");
+        }
+        else
+        {
+            int contas = 0;
+            double valor = 0;
+            System.out.println("***Listagem das Contas***");
+            for (Conta cc : Conta.contas)
+            {
+                System.out.printf("Cliente: %s, saldo: R$ %.2f", cc.getNome(), cc.getSaldo());
+                contas++;
+                valor += cc.getSaldo();
+            }
+            System.out.printf("%d contas. Total R$: %.2f", contas, valor);
+        }
+    }
+}
+
+
