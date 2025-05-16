@@ -144,7 +144,7 @@ public class Laser extends Impressora {
     }
     @Override
     public String toString() {
-        return super.toString() + ", Capacidade Toner: " + capacidadeToner + "ml, Frente e Verso: " + frenteVerso;
+        return super.toString() + ", Capacidade Toner: " + capacidadeToner + " Frente e Verso: " + frenteVerso;
     }
 }
 
