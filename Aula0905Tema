@@ -1,0 +1,401 @@
+package Aula0905Tema;
+import java.time.LocalDate;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class Geral {
+    private static int proximoCodigo = 1; // código inicial
+    private String nome;
+    private int codigo;
+    private String telefone;
+    private String endereco;
+    private LocalDate dataCadastro;
+    private double limiteCredito;
+    
+    // Construtor com parâmetros (gera código automaticamente)
+    public Geral(String nome, String telefone, String endereco,
+             LocalDate dataCadastro, double limiteCredito) 
+    {
+        this.nome = nome;
+        this.codigo = proximoCodigo++; // atribui e incrementa
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.dataCadastro = dataCadastro;
+        this.limiteCredito = limiteCredito;
+    }
+    // Construtor vazio (também gera código automaticamente)
+    public Geral()
+    {
+        this.codigo = proximoCodigo++;
+    }
+    public String getNome() 
+    {
+        return nome;
+    }
+    public void setNome(String nome) 
+    {
+        this.nome = nome;
+    }
+    public int getCodigo() {
+        
+    return codigo; //acessar o código externamente
+}
+    public String getTelefone() 
+    {
+        return telefone;
+    }
+    public void setTelefone(String telefone) 
+    {
+        this.telefone = telefone;
+    }
+    public String getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(String endereco) 
+    {
+        this.endereco = endereco;
+    }
+    public LocalDate getDataCadastro() {
+    return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDate dataCadastro) {
+    this.dataCadastro = dataCadastro;
+    }
+    public double getLimiteCredito() {
+        return limiteCredito;
+    }
+    public void setLimiteCredito(double limiteCredito) 
+    {
+        this.limiteCredito = limiteCredito;
+    }
+        
+    @Override
+    public String toString() 
+    {
+        return "Nome: " + nome 
+        + ", Código: " + codigo 
+        + ", Telefone: " + telefone 
+        + ", Endereço: " + endereco 
+        + ", Data de Cadastro: " + dataCadastro 
+        + ", Limite de Crédito: " + limiteCredito;
+    }
+}
+
+
+package Aula0905Tema;
+
+import java.util.ArrayList;
+import java.time.LocalDate;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class Empresa extends Geral {
+   private String cnpj;
+   private String inscrEstadual; 
+   private LocalDate dataFundacao;
+   
+   // A lista precisa ser public e static para ser acessada assim: Matricial.matriciais
+    public static ArrayList<Empresa> empresas = new ArrayList<>();
+    
+    // Construtor com todos os parâmetros
+    public Empresa(String nome, String telefone, String endereco, LocalDate dataCadastro,
+               double limiteCredito, String cnpj, String inscrEstadual, LocalDate dataFundacao) 
+    {
+        super(nome, telefone, endereco, dataCadastro, limiteCredito);
+        this.cnpj = cnpj;
+        this.inscrEstadual = inscrEstadual;
+        this.dataFundacao = dataFundacao;
+    }
+   
+    public Empresa()
+     {
+         
+     }
+    public String getCnpj() 
+    {
+        return cnpj;
+    }
+    public void setCnpj(String cnpj) 
+    {
+        this.cnpj = cnpj;
+    }
+    public String getInscrEstadual() 
+    {
+        return inscrEstadual;
+    }
+    public void setInscrEstadual(String inscrEstadual) 
+    {
+        this.inscrEstadual = inscrEstadual;
+    }
+    public LocalDate getDataFundacao() 
+    {
+        return dataFundacao;
+    }
+    public void setDataFundacao(LocalDate dataFundacao) 
+    {
+        this.dataFundacao = dataFundacao;
+    }
+    @Override
+    public String toString() 
+    {
+        return super.toString() + ", CNPJ: " + cnpj 
+                + ", Inscrição Estadual: " + inscrEstadual 
+                + ", Data de fundação: " + dataFundacao;
+    }
+    
+}
+
+
+package Aula0905Tema;
+
+import java.util.ArrayList;
+import java.time.LocalDate;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class Cliente extends Geral {
+   private String cpf;
+   private String rg; 
+   private LocalDate dataNascimento;
+   
+   // A lista precisa ser public e static para ser acessada assim: Matricial.matriciais
+    public static ArrayList<Cliente> clientes = new ArrayList<>();
+    
+    // Construtor com todos os parâmetros
+    public Cliente(String nome, String telefone, String endereco, LocalDate dataCadastro,
+                   double limiteCredito, String cpf, String rg, LocalDate dataNascimento) 
+    {
+        super(nome, telefone, endereco, dataCadastro, limiteCredito);
+        this.cpf = cpf;
+        this.rg = rg;
+        this.dataNascimento = dataNascimento;
+    }
+   
+    public Cliente()
+     {
+         
+     }
+    public String getCpf() 
+    {
+        return cpf;
+    }
+    public void setCpf(String cpf) 
+    {
+        this.cpf = cpf;
+    }
+    public String getRg() 
+    {
+        return rg;
+    }
+    public void setRg(String rg) 
+    {
+        this.rg = rg;
+    }
+    public LocalDate getDataNascimento() 
+    {
+        return dataNascimento;
+    }
+    public void setDataNascimento(LocalDate dataNascimento) 
+    {
+        this.dataNascimento = dataNascimento;
+    }
+    @Override
+    public String toString() 
+    {
+        return super.toString() + ", CPF: " + cpf 
+                + ", Registro Geral: " + rg 
+                + ", Data de nascimento: " + dataNascimento;
+    }
+    
+}
+
+
+package Aula0905Tema;
+
+import java.time.LocalDate;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class SistemaGeral {
+  private static Scanner entrada = new Scanner(System.in);
+    
+     public static void main(String[] args) 
+     {
+        
+               
+        int opcao;
+        do {
+            System.out.println("\n--- Cadastro Geral ---");
+            System.out.println("1. Cadastrar Empresas");
+            System.out.println("2. Cadastrar Clientes");
+            System.out.println("3. Listar Empresas");
+            System.out.println("4. Listar Clientes");
+            System.out.println("5. Listar Empresas e Clientes");
+            System.out.println("6. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = Integer.parseInt(entrada.nextLine());
+            
+            switch (opcao) 
+            {
+                case 1: 
+                                   
+                    cadastrarEmpresa();
+                    
+                break;
+                
+                case 2:
+                    
+                    cadastrarCliente();
+                             
+                break;
+                case 3:
+                    
+                    ListarEmpresas();                  
+                
+                break;
+                
+                case 4: 
+                    
+                    ListarClientes();              
+                
+                break;
+                case 5: 
+                {
+                    System.out.println("\n--- Lista de Empresas e Clientes ---\n");
+                     
+                    ListarEmpresas();      
+                    ListarClientes();   
+                }
+                    break;
+                    
+                    case 6:
+                                    
+                    System.out.println(" Saindo do programa...");
+                    
+                    break;
+                    
+                    default:
+                    System.out.println(" Opção inválida");           
+            }
+        } while (opcao != 6);
+       entrada.close();
+   
+        
+    }
+    private static void cadastrarEmpresa() 
+    {
+                  
+    System.out.println("\n--- Cadastro de Empresas ---");
+    // Cria um novo objeto da classe Empresa usando o construtor vazio (sem parâmetros)
+    Empresa nova = new Empresa();
+    System.out.print("Digite o nome: ");
+    nova.setNome(entrada.nextLine());
+    System.out.print("Digite o CNPJ: ");
+    nova.setCnpj(entrada.nextLine());
+    System.out.print("Digite a Inscrição Estadual: ");
+    nova.setInscrEstadual(entrada.nextLine());
+    System.out.print("Digite a data de fundação (AAAA-MM-DD): ");
+    nova.setDataFundacao(LocalDate.parse(entrada.nextLine()));
+    System.out.print("Digite o telefone: ");
+    nova.setTelefone(entrada.nextLine());
+    System.out.print("Digite o endereço: ");
+    nova.setEndereco(entrada.nextLine());
+    System.out.print("Digite a data de cadastro (AAAA-MM-DD): ");
+    nova.setDataCadastro(LocalDate.parse(entrada.nextLine()));
+    System.out.print("Digite o Limite de Crédito: ");
+    nova.setLimiteCredito(Double.parseDouble(entrada.nextLine().replace(",", ".")));
+    
+    Empresa.empresas.add(nova);
+    System.out.println("\nEmpresa adicionada com sucesso!\n");
+    System.out.println("Código gerado automaticamente: " + nova.getCodigo() + "\n");
+    }
+    
+    private static void cadastrarCliente() 
+    {
+    System.out.println("\n--- Cadastro de Clientes ---");
+    
+    Cliente nova = new Cliente();
+    System.out.print("Digite o nome: ");
+    nova.setNome(entrada.nextLine());
+    System.out.print("Digite o CPF: ");
+    nova.setCpf(entrada.nextLine());
+    System.out.print("Digite o Registro Geral: ");
+    nova.setRg(entrada.nextLine());
+    System.out.print("Digite a data de nascimento (AAAA-MM-DD): ");
+    nova.setDataNascimento(LocalDate.parse(entrada.nextLine()));
+    System.out.print("Digite o telefone: ");
+    nova.setTelefone(entrada.nextLine());
+    System.out.print("Digite o endereço: ");
+    nova.setEndereco(entrada.nextLine());
+    System.out.print("Digite a data de cadastro (AAAA-MM-DD): ");
+    nova.setDataCadastro(LocalDate.parse(entrada.nextLine()));
+    System.out.print("Digite o Limite de Crédito: ");
+    nova.setLimiteCredito(Double.parseDouble(entrada.nextLine().replace(",", ".")));
+    
+    Cliente.clientes.add(nova);
+    System.out.println("\nCliente adicionado com sucesso!\n");
+    System.out.println("Código gerado automaticamente: " + nova.getCodigo() + "\n");
+    }
+    private static void ListarEmpresas() {
+        System.out.println("\n--- Lista de empresas ---");
+                    if (Empresa.empresas.isEmpty()) {
+                        System.out.println("Nenhuma empresa cadastrada.");
+                    } else 
+                    {
+                        for (Empresa geral : Empresa.empresas) 
+                        {
+                            System.out.println("\nNome :" + geral.getNome());
+                            System.out.println("Codigo: " + geral.getCodigo());
+                            System.out.println("CNPJ: " + geral.getCnpj());
+                            System.out.println("Inscrição Estadual: " + geral.getInscrEstadual());
+                            System.out.println("Data de fundação: " + geral.getDataFundacao());
+                            System.out.println("Telefone: " + geral.getTelefone());
+                            System.out.println("Endereço :" + geral.getEndereco());
+                            System.out.println("Data de cadastro: " + geral.getDataCadastro());
+                            System.out.println("Limite de crédito :" + geral.getLimiteCredito());
+                            
+                            System.out.println(" ------------------------------------------------");
+                        }
+                    } 
+    
+    }
+    
+    private static void ListarClientes() {
+        System.out.println("\n--- Lista de clientes ---");
+                    if (Empresa.empresas.isEmpty()) {
+                        System.out.println("Nenhum cliente cadastrado.");
+                    } else 
+                    {
+                        for (Cliente geral : Cliente.clientes) 
+                        {
+                            System.out.println("\nNome :" + geral.getNome());
+                            System.out.println("Codigo: " + geral.getCodigo());
+                            System.out.println("CPF: " + geral.getCpf());
+                            System.out.println("Registro Geral: " + geral.getRg());
+                            System.out.println("Data de nascimento: " + geral.getDataNascimento());
+                            System.out.println("Telefone: " + geral.getTelefone());
+                            System.out.println("Endereço :" + geral.getEndereco());
+                            System.out.println("Data de cadastro: " + geral.getDataCadastro());
+                            System.out.println("Limite de crédito :" + geral.getLimiteCredito());
+                            
+                            System.out.println(" ------------------------------------------------");
+                        }
+                    } 
+    
+    }
+    
+}
+
+
+    
+
