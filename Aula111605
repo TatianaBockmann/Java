@@ -1,0 +1,246 @@
+10
+
+package Aula111605;
+
+/**
+ *
+ * @author 03020975
+ */
+public interface Mamifero {
+    
+    final int QTD_OLHOS = 2 ;
+    public int getQdePernas();
+    
+}
+
+
+package Aula111605;//classe pai ou super classe
+
+
+
+/**
+ *
+ * @author 03020975
+ */
+public abstract class Pessoa {
+    protected int codPessoa;
+    protected String nome;
+    protected int idade;
+    
+    public Pessoa(String nome)//construtor
+    {
+        this.nome = nome;
+        
+    }
+    public abstract String getNome();
+    public abstract void setCodPessoa(int codigo);
+    public abstract int getIdade();
+    public abstract void setIdade(int idade);
+     
+    
+}
+
+package Aula111605;
+
+
+
+/**
+ *
+ * @author 03020975
+ */
+public class PessoaFisica extends Pessoa implements Mamifero{
+
+    public PessoaFisica(String nome) {
+        super(nome);
+    }
+
+    public int getCodPessoa() {
+        return codPessoa;
+    }
+
+    @Override
+    public void setCodPessoa(int codPessoa) {
+        this.codPessoa = codPessoa;
+    }
+
+    @Override
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    @Override
+    public int getIdade() {
+        return idade;
+    }
+
+    @Override
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    @Override
+    public int getQdePernas() {
+        return 2;
+    }
+    
+}
+
+
+package Aula111605;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Soma {
+    public int Somar(int a, int b)
+    {
+        return (a + b);
+    }
+        public double Somar(double a, double b)
+        {
+            return (a + b);
+        }
+        public String Somar(String a, String b)
+        {
+            return (a + b);
+        }
+            
+        
+    }
+
+package Aula111605;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author 03020975
+ */
+//Overloading
+public class TesteSoma {
+    public static void main(String[] args) {
+        
+        Scanner ler  = new Scanner(System.in);
+        Soma soma = new Soma();
+        int a, b;
+        double num, num1;
+        String s, s1;
+        System.out.println("Digite um número inteiro: ");
+        a = Integer.parseInt(ler.nextLine());
+        System.out.println("Digite outro número inteiro: ");
+        b = Integer.parseInt(ler.nextLine());
+        System.out.println("A soma é: " + soma.Somar(a, b));
+        System.out.println("Digite um número decimal: ");
+        num = Double.parseDouble(ler.nextLine().replace(",","."));
+        System.out.println("Digite outro número decimal: ");
+        num1 = Double.parseDouble(ler.nextLine().replace(",","."));
+        System.out.println("A soma é " + soma.Somar(num, num1));
+        System.out.println("Digite uma palavra: ");
+        s = ler.nextLine();
+        System.out.println("Digite outra palavra: ");
+        s1 = ler.nextLine();
+        System.out.println("A soma é " + soma.Somar(s, s1));
+    }
+}
+
+package Aula111605;
+
+/**
+ *
+ * @author 03020975
+ */
+//Overriding
+public class Empregado {
+    
+    private double salario;
+    public void setSalario(int diastrabalhados, double valorhora)
+    {
+        this.salario = diastrabalhados * valorhora * 8;
+    }
+    public double getSalario()
+    {
+        return this.salario;
+    }
+    
+}
+
+
+package Aula111605;
+
+/**
+ *
+ * @author 03020975
+ */
+//Overriding
+public class Secretaria extends Empregado {
+    public static void main(String[] args) {
+        Secretaria sec = new Secretaria();
+        sec.setSalario(22,10.000);
+        System.out.println(sec.getSalario());
+    }
+    
+}
+
+package Aula111605;
+
+/**
+ *
+ * @author 03020975
+ */
+//Overriding
+public class Engenheiro extends Empregado {
+    public static void main(String[] args) {
+        Engenheiro eng = new Engenheiro();
+        eng.setSalario(22,35.00);
+        System.out.println(eng.getSalario());
+    }
+}
+
+package Aula111605;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Gerente extends Empregado {
+    private double bonus = .15;
+    public static void main(String[] args) {
+        Gerente g = new Gerente();
+        g.setSalario(22, 35.00);
+        System.out.println(g.getSalario());
+        
+    }
+    @Override
+    public double getSalario()
+    {
+        return super.getSalario() +
+                (super.getSalario() * this.bonus);
+    }
+    
+}
+package Aula111605;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Diretor extends Gerente {
+    private double lucros = 3000.00;
+    public static void main(String[] args) {
+        Diretor d = new Diretor();
+        d.setSalario(22, 35.00);
+        System.out.println(d.getSalario());
+        
+    }
+    @Override
+    public double getSalario()
+    {
+        return super.getSalario() + this.lucros;
+    }
+    
+}
