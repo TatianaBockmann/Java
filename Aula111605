@@ -244,3 +244,51 @@ public class Diretor extends Gerente {
     }
     
 }
+
+package aula11_1605;
+
+/**
+ *
+ * @author 24200322
+ */
+public class ExemploExcecao {
+
+    public static void main(String[] args) {
+        int status = 0;
+        String texto[] = {"É bom programar em java.", "Não, quero dizer", "É ótimo programare em java"};
+        try {
+            for (int i = 0; texto.length >= i; i++) { //para mostrar a exceção, ocorrerá erro a partir da 3ª string
+                System.out.println(texto[i]);
+            }
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Exceção: " + e);
+            status = 1;
+        } finally {
+            System.exit(status);
+        }
+    }
+}
+
+
+
+
+package aula11_1605;
+
+/**
+ *
+ * @author 24200322
+ */
+public class TesteThrows {
+    public static void main(String[] args) {
+       
+        try {
+            new TesteThrows().divisao(10, 0);
+        } catch (Exception e) {
+            System.out.println("Deu erro" + e);
+        }
+    }
+    public void divisao(int d1, int d2) throws ArithmeticException { //mostra o erro que pode acontecer
+        System.out.println("Divisão " + d1/d2);
+    }
+}
