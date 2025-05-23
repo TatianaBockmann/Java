@@ -369,3 +369,94 @@ public class SistemaDeImpressoras {
 
 
 TEMA
+
+package Aula0905Tema;
+import java.time.LocalDate;
+
+/**
+ *
+ * @author Tatiana
+ */
+public class Geral {
+    private static int proximoCodigo = 1; // código inicial
+    private String nome;
+    private int codigo;
+    private String telefone;
+    private String endereco;
+    private LocalDate dataCadastro;
+    private double limiteCredito;
+    
+    // Construtor com parâmetros (gera código automaticamente)
+    public Geral(String nome, String telefone, String endereco,
+             LocalDate dataCadastro, double limiteCredito) 
+    {
+        this.nome = nome;
+        this.codigo = proximoCodigo++; // atribui e incrementa
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.dataCadastro = dataCadastro;
+        this.limiteCredito = limiteCredito;
+    }
+    // Construtor vazio (também gera código automaticamente)
+    public Geral()
+    {
+        this.codigo = proximoCodigo++;
+    }
+    public String getNome() 
+    {
+        return nome;
+    }
+    public void setNome(String nome) 
+    {
+        this.nome = nome;
+    }
+    public int getCodigo() {
+        
+    return codigo; //acessar o código externamente
+}
+    public String getTelefone() 
+    {
+        return telefone;
+    }
+    public void setTelefone(String telefone) 
+    {
+        this.telefone = telefone;
+    }
+    public String getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(String endereco) 
+    {
+        this.endereco = endereco;
+    }
+    public LocalDate getDataCadastro() {
+    return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDate dataCadastro) {
+    this.dataCadastro = dataCadastro;
+    }
+    public double getLimiteCredito() {
+        return limiteCredito;
+    }
+    public void setLimiteCredito(double limiteCredito) 
+    {
+        this.limiteCredito = limiteCredito;
+    }
+        
+    @Override
+    public String toString() 
+    {
+        return "Nome: " + nome 
+        + ", Código: " + codigo 
+        + ", Telefone: " + telefone 
+        + ", Endereço: " + endereco 
+        + ", Data de Cadastro: " + dataCadastro 
+        + ", Limite de Crédito: " + limiteCredito;
+    }
+}
+
+
+    
+
+
