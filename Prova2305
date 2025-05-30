@@ -1,0 +1,514 @@
+package Prova2;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Prova2 {
+    private static int proximoCodigo = 1; // código inicial
+    private String nome;
+    private String cpf;
+    private String rg;
+    private String dataNascimento;
+    private String endereco;
+    private int codigo;
+     // Construtor com parâmetros
+    public Prova2(String nome, String cpf, String rg,String dataNascimento,String endereco) 
+    {
+        this.nome = nome;
+        this.codigo = proximoCodigo++; // atribui e incrementa
+        this.cpf = cpf;
+        this.rg = rg;
+        this.dataNascimento = dataNascimento;
+        this.endereco = endereco;
+        this.codigo = codigo;
+    }
+    // Construtor padrão (vazio)
+    public Prova2()
+    {
+        this.codigo = proximoCodigo++;
+    }
+    // Getters e Setters
+    public String getNome() 
+    {
+        return nome;
+    }
+    public void setNome(String nome) 
+    {
+        this.nome = nome;
+    }
+    public String getCpf() 
+    {
+        return cpf;
+    }
+    public void setCpf(String cpf) 
+    {
+        this.cpf = cpf;
+    }
+    public String getRg() 
+    {
+        return rg;
+    }
+    public void setRg(String rg) 
+    {
+        this.rg = rg;
+    }
+    public String getDataNascimento() 
+    {
+        return dataNascimento;
+    }
+    public void setDataNascimento(String dataNascimento) 
+    {
+        this.dataNascimento = dataNascimento;
+    }
+     public String getEndereco() 
+    {
+        return endereco;
+    }
+    public void setEndereco(String endereco) 
+    {
+        this.endereco = endereco;
+    }
+    public int getCodigo() 
+    {
+        return codigo;
+    }
+    public void setCodigo(int codigo) 
+    {
+        this.codigo = codigo;
+    }
+    
+    // Método toString sobrescrito    Método para exibir os dados da impressora
+    @Override
+    public String toString() 
+    {
+        return "Nome: " + nome + ", CPF: " + cpf + ", RG: " + rg + ", data de nascimento: " + dataNascimento 
+                + ", endereço: " + endereco + ", código: " + codigo;
+    }
+}
+
+package Prova2;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Professor extends Prova2 {
+    private String dataAdmissao;
+    private String disciplinas;
+    
+    public static ArrayList<Professor> professores = new ArrayList<>(); // Lista de professores
+    
+    // Construtor com todos os atributos
+    public Professor(String nome, String cpf, String rg, String dataNascimento, String endereco, String dataAdmissao, 
+            String disciplinas)
+    {
+        super(nome, cpf, rg, dataNascimento, endereco);
+        this.dataAdmissao = dataAdmissao;
+        this.disciplinas = disciplinas;
+        
+    }
+     // Construtor padrão
+     public Professor()
+     {
+        
+     }
+    // Getters e Setters
+     public String getDataAdmissao() 
+    {
+        return dataAdmissao;
+    }
+    public void setDataAdmissao(String dataAdmissao) 
+    {
+        this.dataAdmissao = dataAdmissao;
+    }
+     public String getDisciplinas() 
+    {
+        return disciplinas;
+    }
+    public void setDisciplinas(String disciplinas) 
+    {
+        this.disciplinas = disciplinas;
+    }
+        
+    // Método toString sobrescrito
+    @Override
+    public String toString() 
+    {
+        return super.toString() + ", Data de admissão: " + dataAdmissao + ", Disciplinas: " 
+                + disciplinas;
+    }
+}
+
+package Prova2;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Aluno extends Prova2 
+{
+    
+    private String dataIngresso;
+    private String curso;
+    private String semestre;
+    private double valorMensalidade;
+    public static ArrayList<Aluno> alunos = new ArrayList<>(); // Lista de alunos
+    
+    // Construtor com todos os atributos
+    public Aluno(String nome, String cpf, String rg, String dataNascimento, String endereco, String dataIngresso, 
+            String curso, String semestre, double valorMensalidade)
+    {
+        super(nome, cpf, rg, dataNascimento, endereco);
+        this.dataIngresso = dataIngresso;
+        this.curso = curso;
+        this.semestre = semestre;
+        this.valorMensalidade = valorMensalidade;
+    }
+     // Construtor padrão
+     public Aluno()
+     {
+        
+     }
+    // Getters e Setters
+     public String getDataIngresso() 
+    {
+        return dataIngresso;
+    }
+    public void setDataIngresso(String dataIngresso) 
+    {
+        this.dataIngresso = dataIngresso;
+    }
+     public String getCurso() 
+    {
+        return curso;
+    }
+    public void setCurso(String curso) 
+    {
+        this.curso = curso;
+    }
+     public String getSemestre() 
+    {
+        return semestre;
+    }
+    public void setSemestre(String semestre) 
+    {
+        this.semestre = semestre;
+    }
+     public double getValorMensalidade() 
+    {
+        return valorMensalidade;
+    }
+    public void setValorMensalidade(double valorMensalidade) 
+    {
+        this.valorMensalidade = valorMensalidade;
+    }
+    
+    // Método toString sobrescrito
+    @Override
+    public String toString() 
+    {
+        return super.toString() + ", Data de ingresso: " + dataIngresso + ", Curso: " 
+                + curso + ", Semestre: " + semestre + ", Valor da mensalidade: " + valorMensalidade;
+    }
+}
+package Prova2;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Estagiario extends Prova2 
+{
+    private static int proximoCodigoEstagiario = 1;
+    private String dataInicioEstagio;
+    private double valorBolsa;
+    private int codigoEstagiario;
+    
+    public static ArrayList<Estagiario> estagiarios = new ArrayList<>(); // Lista de estagiários
+    
+    // Construtor com todos os atributos
+    public Estagiario(String nome, String cpf, String rg, String dataNascimento, String endereco, String dataInicioEstagio, 
+            double valorBolsa)
+    {
+        super(nome, cpf, rg, dataNascimento, endereco);
+        this.codigoEstagiario = proximoCodigoEstagiario++;
+        this.dataInicioEstagio = dataInicioEstagio;
+        this.valorBolsa = valorBolsa;
+        
+        
+    }
+     // Construtor padrão
+     public Estagiario()
+     {
+        this.codigoEstagiario = proximoCodigoEstagiario++;
+     }
+    // Getters e Setters
+     public String getDataInicioEstagio() 
+    {
+        return dataInicioEstagio;
+    }
+    public void setDataInicioEstagio(String dataIngresso) 
+    {
+        this.dataInicioEstagio = dataInicioEstagio;
+    }
+     public double getValorBolsa() 
+    {
+        return valorBolsa;
+    }
+    public void setValorBolsa(double valorBolsa) 
+    {
+        this.valorBolsa = valorBolsa;
+    }
+     public int getCodigoEstagiario() 
+    {
+        return codigoEstagiario;
+    }
+    public void setCodigoEstagiario(int codigoEstagiario) 
+    {
+        this.codigoEstagiario = codigoEstagiario;
+    }
+         
+    // Método toString sobrescrito
+    @Override
+    public String toString() 
+    {
+        return super.toString() + ", Data de início estágio: " + dataInicioEstagio + ", valor da bolsa: " 
+                + valorBolsa + ", código estagiário: " + codigoEstagiario;
+    }
+}
+
+package Prova2;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author 03020975
+ */
+public class GeralProva2 {
+
+    private static Scanner entrada = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        int opcao;
+        do {
+            System.out.println("\n--- Cadastro Geral Prova2 ---");
+            System.out.println("1. Cadastrar Alunos");
+            System.out.println("2. Cadastrar Professores");
+            System.out.println("3. Cadastrar Estagiários");
+            System.out.println("4. Listar Alunos");
+            System.out.println("5. Listar Professores");
+            System.out.println("6. Listar Estagiários");
+            System.out.println("7. Listar Alunos, Professores e Estagiários");
+            System.out.println("8. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = Integer.parseInt(entrada.nextLine());
+
+            switch (opcao) {
+                case 1:
+
+                    cadastrarAlunos();
+
+                    break;
+
+                case 2:
+
+                    cadastrarProfessores();
+
+                    break;
+                case 3:
+
+                    CadastrarEstagiarios();
+
+                    break;
+
+                case 4:
+
+                    ListarAlunos();
+
+                    break;
+                case 5:
+
+                    ListarProfessores();
+
+                    break;
+                case 6:
+
+                    ListarEstagiarios();
+
+                    break;
+                case 7: {
+                    System.out.println("\n--- Lista de Alunos, Professores e Estagiários ---\n");
+
+                    ListarAlunos();
+                    ListarProfessores();
+                    ListarEstagiarios();
+                }
+                break;
+                case 8:
+
+                    System.out.println(" Saindo do programa...");
+
+                    break;
+
+                default:
+                    System.out.println(" Opção inválida");
+            }
+        } while (opcao != 8);
+        entrada.close();
+
+    }
+
+    private static void cadastrarAlunos() {
+        System.out.println("\n--- Cadastro de Alunos ---");
+        // Cria um novo objeto da classe Aluno usando o construtor vazio (sem parâmetros)
+        Aluno nova = new Aluno();
+        System.out.print("Digite o nome: ");
+        nova.setNome(entrada.nextLine());
+        System.out.print("Digite o CPF: ");
+        nova.setCpf(entrada.nextLine());
+        System.out.print("Digite o RG: ");
+        nova.setRg(entrada.nextLine());
+        System.out.print("Digite a data de nascimento: ");
+        nova.setDataNascimento(entrada.nextLine());
+        System.out.print("Digite o endereço: ");
+        nova.setEndereco(entrada.nextLine());
+        System.out.print("Digite a data de ingresso: ");
+        nova.setDataIngresso(entrada.nextLine());
+        System.out.print("Digite o curso: ");
+        nova.setCurso(entrada.nextLine());
+        System.out.print("Digite o semestre: ");
+        nova.setSemestre(entrada.nextLine());
+        System.out.print("Digite o valor da mensalidade: ");
+        nova.setValorMensalidade(Double.parseDouble(entrada.nextLine().replace(",", ".")));
+
+        Aluno.alunos.add(nova);
+        System.out.println("\nAluno adicionado com sucesso!\n");
+        System.out.println("Código gerado automaticamente: " + nova.getCodigo() + "\n");
+    }
+
+    private static void cadastrarProfessores() {
+        System.out.println("\n--- Cadastro de Professores ---");
+
+        Professor nova = new Professor();
+        System.out.print("Digite o nome: ");
+        nova.setNome(entrada.nextLine());
+        System.out.print("Digite o CPF: ");
+        nova.setCpf(entrada.nextLine());
+        System.out.print("Digite o RG: ");
+        nova.setRg(entrada.nextLine());
+        System.out.print("Digite a data de nascimento: ");
+        nova.setDataNascimento(entrada.nextLine());
+        System.out.print("Digite o endereço: ");
+        nova.setEndereco(entrada.nextLine());
+        System.out.print("Digite a data de admissão: ");
+        nova.setDataAdmissao(entrada.nextLine());
+        System.out.print("Digite as disciplinas: ");
+        nova.setDisciplinas(entrada.nextLine());
+
+        Professor.professores.add(nova);
+        System.out.println("\nProfessor adicionado com sucesso!\n");
+        System.out.println("Código gerado automaticamente: " + nova.getCodigo() + "\n");
+    }
+
+    private static void CadastrarEstagiarios() {
+        System.out.println("\n--- Cadastro de Estagiários ---");
+
+        Estagiario nova = new Estagiario();
+        System.out.print("Digite o nome: ");
+        nova.setNome(entrada.nextLine());
+        System.out.print("Digite o CPF: ");
+        nova.setCpf(entrada.nextLine());
+        System.out.print("Digite o RG: ");
+        nova.setRg(entrada.nextLine());
+        System.out.print("Digite a data de nascimento: ");
+        nova.setDataNascimento(entrada.nextLine());
+        System.out.print("Digite o endereço: ");
+        nova.setEndereco(entrada.nextLine());
+        System.out.print("Digite a data do início do estágio: ");
+        nova.setDataInicioEstagio(entrada.nextLine());
+        System.out.print("Digite o valor da bolsa: ");
+        nova.setValorBolsa(Double.parseDouble(entrada.nextLine().replace(",", ".")));
+
+        Estagiario.estagiarios.add(nova);
+        System.out.println("\nEstagiário adicionado com sucesso!\n");
+        System.out.println("Código gerado automaticamente: " + nova.getCodigo() + "\n");
+        System.out.println("CódigoEstagiario gerado automaticamente: " + nova.getCodigoEstagiario() + "\n");
+    }
+
+    private static void ListarAlunos() {
+        System.out.println("\n--- Lista de alunos ---");
+        if (Aluno.alunos.isEmpty()) {
+            System.out.println("Nenhum aluno cadastrado.");
+        } else {
+            for (Aluno geral : Aluno.alunos) {
+                System.out.println("\nNome :" + geral.getNome());
+                System.out.println("Codigo: " + geral.getCodigo());
+                System.out.println("CNPJ: " + geral.getCpf());
+                System.out.println("RG: " + geral.getRg());
+                System.out.println("Data de nascimento: " + geral.getDataNascimento());
+                System.out.println("Endereço :" + geral.getEndereco());
+                System.out.println("Data de ingresso: " + geral.getDataIngresso());
+                System.out.println("Curso :" + geral.getCurso());
+                System.out.println("Semestre :" + geral.getSemestre());
+                System.out.println("Valor da mensalidade: " + geral.getValorMensalidade());
+
+                System.out.println(" ------------------------------------------------");
+            }
+        }
+
+    }
+
+    private static void ListarProfessores() {
+        System.out.println("\n--- Lista de professores ---");
+        if (Aluno.alunos.isEmpty()) {
+            System.out.println("Nenhum professor cadastrado.");
+        } else {
+            for (Professor geral : Professor.professores) {
+                System.out.println("\nNome :" + geral.getNome());
+                System.out.println("Codigo: " + geral.getCodigo());
+                System.out.println("CNPJ: " + geral.getCpf());
+                System.out.println("RG: " + geral.getRg());
+                System.out.println("Data de nascimento: " + geral.getDataNascimento());
+                System.out.println("Endereço :" + geral.getEndereco());
+                System.out.println("Data de admissão: " + geral.getDataAdmissao());
+                System.out.println("Disciplinas :" + geral.getDisciplinas());
+
+                System.out.println(" ------------------------------------------------");
+            }
+        }
+
+    }
+
+    private static void ListarEstagiarios() {
+        System.out.println("\n--- Lista de estagiários ---");
+        if (Estagiario.estagiarios.isEmpty()) {
+            System.out.println("Nenhum estagiário cadastrado.");
+        } else {
+            for (Estagiario geral : Estagiario.estagiarios) {
+                System.out.println("\nNome :" + geral.getNome());
+                System.out.println("Codigo: " + geral.getCodigo());
+                System.out.println("CNPJ: " + geral.getCpf());
+                System.out.println("RG: " + geral.getRg());
+                System.out.println("Data de nascimento: " + geral.getDataNascimento());
+                System.out.println("Endereço :" + geral.getEndereco());
+                System.out.println("Código estagiário :" + geral.getCodigoEstagiario());
+                System.out.println("Data início estágio :" + geral.getDataInicioEstagio());
+                System.out.println("Valor da bolsa: " + geral.getValorBolsa());
+
+                System.out.println(" ------------------------------------------------");
+            }
+        }
+
+    }
+
+}
+
