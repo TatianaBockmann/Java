@@ -1,0 +1,54 @@
+package Aula123005;
+
+import java.text.NumberFormat;
+import java.util.Scanner;
+
+/**
+ *
+ * @author 03020975
+ */
+public class Exercicio3005 
+{
+    public static void main(String[] args)  
+    {
+        Scanner scanner = new Scanner(System.in);
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance();
+        
+        String[] descricoes = new String[5];
+        int[] quantidades = new int[5];
+        double[] valoresUnitarios = new double[5];
+        double[] valoresTotais = new double [5];
+        double totalCompra = 0;
+        
+        for(int i = 0; i < 5; i++)
+        {
+            System.out.println("Produto " + (i+1));
+            
+            System.out.println("Descrição: ");
+            descricoes[i] = scanner.nextLine();
+            
+            System.out.println("Quantidade: ");
+            quantidades[i] = Integer.parseInt(scanner.nextLine());
+            
+            System.out.println("Valor unitário: ");
+            valoresUnitarios[i] = Double.parseDouble(scanner.nextLine());
+            
+            valoresTotais[i] = quantidades[i] * valoresUnitarios[i];
+            totalCompra += valoresTotais[i];
+            System.out.println();
+        }
+        System.out.println("Resumo da compra: ");
+        System.out.printf("%-20s %-10s %-15s%-15s\n", "Descrição", "Qtd", "Vlr Unitário", "Vlr Total");
+        
+        for(int i = 0; i < 5; i++)
+        {
+            System.out.printf("%-20s %-10d %-15s %-15s\n", descricoes[i], quantidades[i],
+                    formatoMoeda.format(valoresUnitarios[i]),
+                    formatoMoeda.format(valoresTotais[i]));
+            
+        }
+        System.out.println("Total da compra: " + formatoMoeda.format(totalCompra));
+        
+    }
+    
+}
