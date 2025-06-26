@@ -99,7 +99,7 @@ public class Empresa extends Geral {
    private String inscrEstadual; 
    private LocalDate dataFundacao;
    
-   // A lista precisa ser public e static para ser acessada assim: Matricial.matriciais
+   // A lista precisa ser public e static para ser acessada assim: Empresa.empresas
     public static ArrayList<Empresa> empresas = new ArrayList<>();
     
     // Construtor com todos os parâmetros
@@ -165,7 +165,7 @@ public class Cliente extends Geral {
    private String rg; 
    private LocalDate dataNascimento;
    
-   // A lista precisa ser public e static para ser acessada assim: Matricial.matriciais
+   // A lista precisa ser public e static para ser acessada assim: Cliente.clientes
     public static ArrayList<Cliente> clientes = new ArrayList<>();
     
     // Construtor com todos os parâmetros
@@ -372,7 +372,7 @@ public class SistemaGeral {
     
     private static void ListarClientes() {
         System.out.println("\n--- Lista de clientes ---");
-                    if (Empresa.empresas.isEmpty()) {
+                    if (Cliente.clientes.isEmpty()) {
                         System.out.println("Nenhum cliente cadastrado.");
                     } else 
                     {
