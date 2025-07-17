@@ -1,0 +1,10 @@
+Criar um projeto novo chamado Contatos e nele criar um Form JFrame conforme feito na aula passada, se baseando no Cadastro de E-mails,
+colocando todas as funcionalidades dele, colocando além do Nome e E-mail os seguintes campos: Endereço, Cidade e Telefone.
+Colocar na Janela como Título: Cadastro de Contatos por (colocar seu nome)
+Alterar no Frame de Cadastro de E-mails para Cadastro de Contatos.
+
+BAIXAR ZIP 
+ARQUIVO ZIPADO → abrir em uma nova janela → baixar → pasta downloads → bd extrair tudo → abrir → src
+
+SWING
+ 
