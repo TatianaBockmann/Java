@@ -1,10 +1,151 @@
-Criar um projeto novo chamado Contatos e nele criar um Form JFrame conforme feito na aula passada, se baseando no Cadastro de E-mails,
-colocando todas as funcionalidades dele, colocando além do Nome e E-mail os seguintes campos: Endereço, Cidade e Telefone.
+Criar um projeto novo chamado Contatos e nele criar um Form JFrame conforme feito na aula passada, se baseando no Cadastro de 
+E-mails, colocando todas as funcionalidades dele, colocando além do Nome e E-mail os seguintes campos: Endereço, Cidade e Telefone.
 Colocar na Janela como Título: Cadastro de Contatos por (colocar seu nome)
 Alterar no Frame de Cadastro de E-mails para Cadastro de Contatos.
 
 BAIXAR ZIP 
 ARQUIVO ZIPADO → abrir em uma nova janela → baixar → pasta downloads → bd extrair tudo → abrir → src
 
-SWING
- 
+ZIPAR ARQUIVO INTEIRO
+Arquivo → Exportar projeto → para ZIP
+
+ZIPAR CLASSES
+Bd sobre a classe → Propriedaddes → Todos os arquivos ... copia o caminho e cola na lupa da pasta Explorador de arquivos → 
+bd sobre o arquivo → Compactar para arquivo ZIP.
+
+Recomendações de Fluxo no NetBeans
+1.	Adicione seu JFrame via botão direito > Novo > JFrame Form
+2.	Faça a interface com os componentes (botões, textos, etc.)
+3.	Escreva o código nos eventos (actionPerformed, mouseClicked, etc.)
+4.	Clique em "Limpar e Construir" para compilar tudo com segurança
+5.	Execute o projeto normalmente
+
+
+Java 
+Novo projeto → Categorias: Java e Projetos: Aplicação Java → ContatosTrabalhoFinal → Não criar classe principal
+Classe → public class Contatos
+
+No pacote criado → bd → novo → Form JFrame (CadContatos)
+Parte central superior: código-fonte, Projeto e Histórico.
+Paleta
+Inserir Painel com borda e título;
+Inserir Label → Propriedades → text: Nome; toolTipText: Preencha o nome;
+Inserir Campo de texto → Propriedades: limpar text; Código → Nome da variável: nome;
+
+Inserir Label → Propriedades → text: E-mail; toolTipText: Preencha o e-mail;
+Inserir Campo de texto → Propriedades: limpar text; Código → Nome da variável: email;
+
+Inserir Label → Propriedades → text: Endereço; toolTipText: Preencha o endereço;
+Inserir Campo de texto → Propriedades: limpar text; Código → Nome da variável: endereco;
+
+Inserir Label → Propriedades → text: Cidade; toolTipText: Preencha o nome da cidade;
+Inserir Campo de texto → Propriedades: limpar text; Código → Nome da variável: cidade;
+
+Inserir Label → Propriedades → text: Telefone; toolTipText: Preencha o número de telefone;
+Inserir Campo de texto → Propriedades: limpar text; Código → Nome da variável: telefone;
+
+Botão fica fora do painel
+Inserir botão salvar → Propriedades: text: Salvar e toolTipText: Clique aqui para salvar; Código: Nome da variável: btSalvar; 
+Eventos: mouseClicked: btSalvarMouseClicked. Já abre o código.
+Inserir botão limpar  → Propriedades: text: Limpar e toolTipText: Clique aqui para limpar; Código: Nome da variável: btLimpar; 
+Eventos: mouseClicked: btLimparMouseClicked. Já abre o código.
+Inserir botão listar  → Propriedades: text: Listar e toolTipText: Clique aqui para listar contatos; Código: Nome da variável: 
+btListar; Eventos: mouseClicked: btListarMouseClicked. Já abre o código.
+Inserir botão fechar  → Propriedades: text: Fechar e toolTipText: Clique aqui para fechar; Código: Nome da variável: btFechar; E
+ventos: mouseClicked: btFecharMouseClicked. Já abre o código.
+
+LIMPAR E CONSTRUIR → bd sobre o projeto → limpar e construir.
+No código
+private void btSalvarMouseClicked(java.awt.event.MouseEvent evt) {                                      
+         if (email.getText().isEmpty() || nome.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Preencha todos os campos",
+                    "Aviso",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            if (!email.getText().contains("@")
+                    || !email.getText().contains(".")
+                    || email.getText().contains(" ")) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "E-mail inválido!",
+                        "Aviso",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                Contatos novo = new Contatos();
+                novo.setEmail(email.getText());
+                novo.setNome(nome.getText());
+                novo.setEndereco(endereco.getText());
+                novo.setCidade(cidade.getText());
+                novo.setTelefone(telefone.getText());
+                Contatos.lista.add(novo);
+                JOptionPane.showMessageDialog(rootPane,
+                        nome.getText() + " Adicionado com sucesso!",
+                        "Inclusão",
+                        JOptionPane.INFORMATION_MESSAGE);
+                email.setText("");// limpa o campo de e-mail
+                endereco.setText("");//aspas duplas indicam uma string
+                cidade.setText("");
+                telefone.setText("");
+                nome.setText(null);// zera o campo de nome (valor nulo (sem objeto))
+            }
+        }
+    }                                     
+
+    private void btLimparMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        email.setText("");
+        nome.setText(null);
+        endereco.setText("");
+        cidade.setText("");
+        telefone.setText("");
+    }                                     
+
+    private void btListarMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        String mensagem="";
+        if(Contatos.lista.isEmpty())
+        {
+            JOptionPane.showMessageDialog(rootPane, "Não há contatos cadastrados.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+            for(Contatos novo:Contatos.lista)
+            {
+                mensagem += "Nome: " + novo.getNome() + "\nE-mail: " + novo.getEmail() + "\nEndereço: " + novo.getEndereco() +
+"\nCidade: " + novo.getCidade() + "\nTelefone: "+ novo.getTelefone() + "\n\n";
+            }
+           
+            JOptionPane.showMessageDialog(rootPane, mensagem, "Lista de Contatos", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }                                     
+
+    private void btFecharMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        System.exit(0);
+    }                                     
+
+public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+Nesta parte colocar:
+        
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CadContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CadContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CadContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CadContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+
